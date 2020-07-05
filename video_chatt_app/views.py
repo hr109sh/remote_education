@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def index(request):
-	return render(request,'video_chatt_app/index.html')
+	return render(request,'video_chatt_app/home.html')
 
 
 # def client(request,room_name):

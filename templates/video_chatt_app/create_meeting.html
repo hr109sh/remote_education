@@ -4,7 +4,6 @@
 	<div class="col-md-4">
 		<div class="card">
   			<div class="card-body">
-    			<form>
   					<div class="form-group">
     					<select name="subject" id="SubjectDropdown" class="form-control">
     						<option value="volvo">Math</option>
@@ -22,7 +21,6 @@
   						</select>
   					</div>
   					<button type="submit" class="btn btn-primary btn-lg btn-block" id="create-meeting">Submit</button>
-				</form>
   			</div>
 		</div>
 	</div>
@@ -30,6 +28,7 @@
 	<div class="col-md-4"></div>
 </div>
 <script>
-  var logedin_user = '{{ user.get_username }}'
+
+  var logedin_user = '{{ user.get_username }}';
 </script>
 {%endblock%}
