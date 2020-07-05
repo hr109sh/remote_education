@@ -1,0 +1,20 @@
+{%extends 'video_chatt_app/base.html'%}
+{%block content%}
+<div class="row" id ="vedio-chatt-room">
+	<div class="col-md-4">
+		<div class="card">
+  			<div class="card-body">
+    			<input class="form-control" type="text" id="join-meeting-input" placeholder="Room Name"><br>
+    			<button type="button" id="join-meeting-btn" class="btn btn-primary btn-lg btn-block">Submit</button>
+  			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+	</div>
+	<div class="col-md-4">
+	</div>
+</div>
+<script>
+  var logedin_user = '{{ user.get_username }}'
+</script>
+{%endblock%}
