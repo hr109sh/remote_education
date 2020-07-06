@@ -50,6 +50,7 @@ class user_parent(models.Model):
 	parent_name = models.CharField(max_length = 100)
 	user_id = models.ForeignKey(User,on_delete = models.CASCADE)
 
+
 class StudentReport(models.Model):
 	user_id = models.ForeignKey(User,on_delete = models.CASCADE)
 	meeting_id = models.ForeignKey(UserMeeting,on_delete = models.CASCADE)

@@ -1,15 +1,15 @@
 {%extends 'video_chatt_app/base.html'%}
 {%block content%}
+{{subject_list}}
 <div class ="row" id="chatt-room">
 	<div class="col-md-4">
 		<div class="card">
   			<div class="card-body">
   					<div class="form-group">
     					<select name="subject" id="SubjectDropdown" class="form-control">
-    						<option value="volvo">Math</option>
-    						<option value="saab">Physics</option>
-    						<option value="opel">Chemistry</option>
-    						<option value="audi">Biology</option>
+                {%for subject in subject_obj%}
+    						<option value="volvo">{{subject.subject_name}}</option>
+                {%endfor%}
   						</select>
   					</div>
   					<div class="form-group">
