@@ -30,9 +30,7 @@
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading"><a href="{%url 'video_chatt_app:index'%}">Remote Education</a></div>
       <div class="list-group list-group-flush">
-        {% if user_role_info == 'student' %}
         <a href="{%url 'video_chatt_app:join_meeting'%}" class="list-group-item list-group-item-action bg-light">Join Meeting</a>
-        {% endif %}
         {% if user_role_info == 'teacher' %}
         <a href="{%url 'video_chatt_app:create_meeting'%}" class="list-group-item list-group-item-action bg-light">Host Meeting</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Upload Questions</a>
