@@ -14,20 +14,13 @@ class UserRole(models.Model):
 	user_id= models.ForeignKey(User, on_delete=models.CASCADE)
 	role_id = models.ForeignKey(Role, on_delete=models.CASCADE)
 
-	
-class UserMeeting(models.Model):
-	user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-	meeting_name = models.CharField(max_length = 100)
-	meet_start = models.DateTimeField(auto_now_add=True)
-	meet_end = models.DateTimeField(null=True,blank=True)
 
-
-class User_attendence(models.Model):
-	user_id= models.ForeignKey(User, on_delete=models.CASCADE)
-	meeting_id = models.ForeignKey(UserMeeting,on_delete=models.CASCADE)
 
 class Subject(models.Model):
 	subject_name = models.CharField(max_length = 100)
+
+	def __str__(self):
+		return self.subject_name
 
 
 class Topic(models.Model):
@@ -51,6 +44,19 @@ class user_parent(models.Model):
 	user_id = models.ForeignKey(User,on_delete = models.CASCADE)
 
 
+
+class UserMeeting(models.Model):
+	user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+	meeting_id = models.IntegerField()
+	meeting_subject = models.ForeignKey(Subject,on_delete = models.CASCADE)
+	meeting_topic = models.ForeignKey(Topic,on_delete = models.CASCADE)
+	meet_start = models.DateTimeField(auto_now_add=True)
+	meet_end = models.DateTimeField(null=True,blank=True)
+
+class User_attendence(models.Model):
+	user_id= models.ForeignKey(User, on_delete=models.CASCADE)
+	meeting_id = models.ForeignKey(UserMeeting,on_delete=models.CASCADE)
+
 class StudentReport(models.Model):
 	user_id = models.ForeignKey(User,on_delete = models.CASCADE)
 	meeting_id = models.ForeignKey(UserMeeting,on_delete = models.CASCADE)
@@ -58,3 +64,4 @@ class StudentReport(models.Model):
 	question_time = models.DateTimeField(auto_now_add = True)
 	answer_time = models.DateTimeField(null=True)
 	answer_corrent = models.CharField(max_length = 100)
+

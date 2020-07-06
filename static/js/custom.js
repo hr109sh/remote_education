@@ -1,7 +1,27 @@
+
 $('#create-meeting').click(function(){
-	$('#chatt-room').html('');
-	$("#chatt-room").append( "<div id ='meet'></div>" );
-	createRoom(logedin_user , logedin_user);
+	var subject = $('#SubjectDropdown').val();
+	var topic = $('#topicDropdown').val();
+	if (subject && topic){
+		$.ajax({
+        	url: '/schedule_meeting/',
+        	data: {
+          		'subject': subject,
+          		'topic' : topic
+        	},
+        	dataType: 'json',
+        	success: function (data) {
+        		$('#chatt-room').html('');
+        		$("#chatt-room").append( "<p>Meeting Id :- "+data.meeting_id+"</p>" );
+        		$("#chatt-room").append( "<div id ='meet'></div>" );
+				createRoom(data.meeting_id,logedin_user);
+        	}
+      	});
+	}
+	else{
+		$('#create-meeting-alet').html('Please select value');
+		$('#create-meeting-alet').css('display','block');
+	}
 });
 
 function createRoom(room_name , display_name){
@@ -9,7 +29,7 @@ function createRoom(room_name , display_name){
 	const options = {
     	roomName: room_name,
     	width: 1000,
-    	height: 600,
+    	height: 580,
     	parentNode: document.querySelector('#meet'),
     	userInfo: {
         	displayName: display_name
@@ -21,9 +41,42 @@ function createRoom(room_name , display_name){
 
 
 $('#join-meeting-btn').click(function(){
-	var room_name = $('#join-meeting-input').val();
-	$('#vedio-chatt-room').html('');
-	$("#vedio-chatt-room").append( "<div id ='meet'></div>" );
-	createRoom(room_name , logedin_user);
+	var meeting_name = $('#meeting-name').val();
+	var meeting_id = $('#meetingid').val();
+	if (meeting_name && meeting_id){
+		$.ajax({
+        	url: '/check_for_meetingid/',
+        	data: {
+          		'meetingId': meeting_id,
+        	},
+        	dataType: 'json',
+        	success: function (data) {
+        		if(data.metting_value){
+        			$.ajax({
+        				url: '/student_join_meeting/',
+        				data: {
+          					'meeting_name': meeting_name,
+          					'meetingId' : meeting_id
+        				},
+        				dataType: 'json',
+        				success: function (data) {
+							$('#vedio-chatt-room').html('');
+							$("#vedio-chatt-room").append( "<div id ='meet'></div>" );
+							createRoom(meeting_id ,meeting_name);
+        				}
+      				});
+        		}
+        		else{
+        			alert('fail')
+        		}
+        	}
+      	});
+	}
+	else{
+		$('#join-meeting-alert').html('Please Enter value');
+		$('#join-meeting-alert').css('display','block');
+	}
 });
+
+
 

@@ -1,18 +1,24 @@
 {%extends 'video_chatt_app/base.html'%}
 {%block content%}
 <div class="row" id ="vedio-chatt-room">
-	<div class="col-md-4">
-		<div class="card">
-  			<div class="card-body">
-    			<input class="form-control" type="text" id="join-meeting-input" placeholder="Room Name"><br>
-    			<button type="button" id="join-meeting-btn" class="btn btn-primary btn-lg btn-block">Submit</button>
-  			</div>
-		</div>
+	<div class="col-md-3">
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-6">
+		<div id="formContent">
+        	<div class="fadeIn first">
+            	<h1 style="color:#56baed">Join Meeting</h1>
+        	</div>
+        	<div class="alert alert-danger" role="alert" id = "join-meeting-alert" style="width:80%;margin-left:9%;display:none;">
+			</div>
+        	<input type="text" id="meeting-name" class="fadeIn first" name="Name" placeholder="Enter Name">
+            <input type="text" id="meetingid" class="fadeIn first" name="Meeting ID" placeholder="Enter Meeting ID">
+            <input type="submit" class="fadeIn first" value="Join Now" id = "join-meeting-btn">
+    	</div>
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 	</div>
+
+</div>
 <script>
   var logedin_user = '{{ user.get_username }}'
 </script>

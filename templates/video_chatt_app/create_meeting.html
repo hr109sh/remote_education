@@ -1,34 +1,43 @@
 {%extends 'video_chatt_app/base.html'%}
 {%block content%}
-{{subject_list}}
 <div class ="row" id="chatt-room">
-	<div class="col-md-4">
-		<div class="card">
-  			<div class="card-body">
-  					<div class="form-group">
-    					<select name="subject" id="SubjectDropdown" class="form-control">
-                {%for subject in subject_obj%}
-    						<option value="volvo">{{subject.subject_name}}</option>
-                {%endfor%}
-  						</select>
-  					</div>
-  					<div class="form-group">
-    					<select name="topic" id="topicDropdown" class="form-control">
-    						<option value="volvo">Topic</option>
-    						<option value="saab">Topic</option>
-    						<option value="opel">Topic</option>
-    						<option value="audi">Topic</option>
-  						</select>
-  					</div>
-  					<button type="submit" class="btn btn-primary btn-lg btn-block" id="create-meeting">Submit</button>
-  			</div>
-		</div>
-	</div>
-	<div class="col-md-4"></div>
-	<div class="col-md-4"></div>
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div id="formContent">
+      <div class="fadeIn first">
+        <h1 style="color:#56baed">Host Meeting</h1>
+      </div>
+      <div class="alert alert-danger" id = "create-meeting-alet" role="alert" style="width:58%;margin-left:21%;display:none;">
+      </div>
+        <select name="subject" id="SubjectDropdown" class="form-control fadeIn" style="width:58%;margin-left:21%" onchange="appendValue()">
+          {%for subject in subject_list%}
+            <option value="{{subject.subject_id.subject_name}}">{{subject.subject_id.subject_name}}</option>
+          {%endfor%}
+        </select><br>
+        <select name="topic" id="topicDropdown" class="form-control fadeIn" style="width:58%;margin-left:21%">
+        </select><br>
+        <input type="submit" class="fadeIn first" value="Start Meeting" id="create-meeting">
+    </div>
+  </div>
+  <div class="col-md-3"></div>
 </div>
 <script>
-
   var logedin_user = '{{ user.get_username }}';
+
+  function appendValue(){
+    var selected_value = $('#SubjectDropdown').val();
+    $('#topicDropdown').html('');
+    {%for topic_item in topic_list%}
+      {%for topic in topic_item%}
+        var subject_name = '{{topic.subject_id.subject_name}}'
+        if (subject_name == selected_value){
+          $('#topicDropdown').append($('<option>', {
+              value: '{{topic.topic_name}}',
+              text: '{{topic.topic_name}}'
+          }));
+        }
+      {%endfor%}
+    {%endfor%}
+  }
 </script>
 {%endblock%}
