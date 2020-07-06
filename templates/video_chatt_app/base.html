@@ -33,7 +33,7 @@
         <a href="{%url 'video_chatt_app:join_meeting'%}" class="list-group-item list-group-item-action bg-light">Join Meeting</a>
         {% if user_role_info == 'teacher' %}
         <a href="{%url 'video_chatt_app:create_meeting'%}" class="list-group-item list-group-item-action bg-light">Host Meeting</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Upload Questions</a>
+        <a href="{%url 'video_chatt_app:upload_question'%}" class="list-group-item list-group-item-action bg-light">Upload Questions</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Export Report</a>
         {% endif %}
       </div>
@@ -49,7 +49,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
+        <span class="title">Teacher Assist</span>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item dropdown">

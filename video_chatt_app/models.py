@@ -9,10 +9,15 @@ class Role(models.Model):
 	def __str__(self):
 		return self.name
 
+class UserGrade(models.Model):
+	student_grade = models.IntegerField()
+
+
 
 class UserRole(models.Model):
 	user_id= models.ForeignKey(User, on_delete=models.CASCADE)
 	role_id = models.ForeignKey(Role, on_delete=models.CASCADE)
+	grade_id = models.ForeignKey(UserGrade,on_delete=models.CASCADE)
 
 
 

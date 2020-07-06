@@ -103,5 +103,12 @@ def student_join_meeting(request):
 		'mesaage':'Marked Attandance'
 	}
 	return JsonResponse(data)
+
+
+def upload_question(request):
+	user_obj = User.objects.get(username = request.user.username)
+	user_role = UserRole.objects.get(user_id = user_obj)
+	user_role_info = user_role.role_id.name
+	return render(request,'video_chatt_app/upload_question.html',{'user_role_info':user_role_info})
 	
 

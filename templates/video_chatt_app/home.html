@@ -1,48 +1,148 @@
 {%extends 'video_chatt_app/base.html'%}
 {%block content%}
-  <h1 class="mt-4">Teacher Dashboard</h1>
-  <div class="row">
-    <div class="col">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Select Grade
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action - 1</a>
-            <a class="dropdown-item" href="#">Another Action</a>
-            <a class="dropdown-item" href="#">Something else is here</a>
-        </div>
-        </div>
-        <div class="col">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Select Topic
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action - 1</a>
-            <a class="dropdown-item" href="#">Another Action</a>
-            <a class="dropdown-item" href="#">Something else is here</a>
-          </div>
-        </div>
+            <div class="container-fluid">
+                <h1 class="mt-4"></h1>
+                <div class="row">
+                    <div class="col">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Grade
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <!--<a class="dropdown-item" href="#">All</a>-->
+                            <a class="dropdown-item" href="#">Grade 1</a>
+                            <a class="dropdown-item" href="#">Grade 2</a>
+                        </div>
+                    </div>
 
-        <div class="col">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Select Subject
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action - 1</a>
-            <a class="dropdown-item" href="#">Another Action</a>
-            <a class="dropdown-item" href="#">Something else is here</a>
-          </div>
-        </div>
-        <div class="col">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Select Student
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action - 1</a>
-            <a class="dropdown-item" href="#">Another Action</a>
-            <a class="dropdown-item" href="#">Something else is here</a>
-          </div>
-        </div>
-      </div>
-      <button type="button" class="btn btn-primary" style="margin-top: 2rem;margin-left:1rem;">Generate Report</button>
+                    <div class="col">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Subject
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Maths</a>
+                            <a class="dropdown-item" href="#">Science</a>
+                            <a class="dropdown-item" href="#">Geography</a>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Topic
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Numbers</a>
+                            <a class="dropdown-item" href="#">Another Action</a>
+                            <a class="dropdown-item" href="#">Something else is here</a>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Student
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">John Doe</a>
+                            <a class="dropdown-item" href="#">Rachel Green</a>
+                            <a class="dropdown-item" href="#">Sheldon Cooper</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <!-- Card -->
+                        <div class="card booking-card topMargin">
+
+                            <!-- Card image -->
+                            <div class="view overlay">
+                                    <div class="card-1">
+                                        <div class="card-title font-weight-bold">Student Attentiveness</div>
+                                        <div class="card-value-display rounded-circle">
+                                            <div class="card-value">82.5%</div>
+                                        </div>
+
+                                    </div>
+                                    <div></div>
+                                <a href="#!">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+
+                            <!-- Card content -->
+                            <div class="card-body">
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
+                                    standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled 
+                                    it to make a type specimen book.</p>
+
+                            </div>
+
+                        </div>
+                        <!-- Card -->
+                    </div>
+                   <div class="col">
+                        <!-- Card -->
+                        <div class="card booking-card topMargin">
+
+                            <!-- Card image -->
+                            <div class="view overlay">
+                                    <div class="card-2">
+                                        <div class="card-title font-weight-bold">Student Attentiveness</div>
+                                        <div class="card-value-display rounded-circle">
+                                            <div class="card-value">82.5%</div>
+                                        </div>
+
+                                    </div>
+                                    <div></div>
+                                <a href="#!">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+
+                            <!-- Card content -->
+                            <div class="card-body">
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
+                                    standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled 
+                                    it to make a type specimen book.</p>
+
+                            </div>
+
+                        </div>
+                        <!-- Card -->
+                    </div>
+                    <div class="col">
+                        <!-- Card -->
+                        <div class="card booking-card topMargin">
+
+                            <!-- Card image -->
+                            <div class="view overlay">
+                                    <div class="card-3">
+                                        <div class="card-title font-weight-bold">Student Attentiveness</div>
+                                        <div class="card-value-display rounded-circle">
+                                            <div class="align-middle card-value ">82.5%</div>
+                                        </div>
+
+                                    </div>
+                                    <div></div>
+                                <a href="#!">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+
+                            <!-- Card content -->
+                            <div class="card-body">
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
+                                    standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled 
+                                    it to make a type specimen book.</p>
+                            </div>
+
+                        </div>
+                        <!-- Card -->
+                    </div>
+
+                </div>
+            </div>
+
 {%endblock%}
