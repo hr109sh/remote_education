@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from . models import *
@@ -13,7 +13,10 @@ def index(request):
 	user_obj = User.objects.get(username = request.user.username)
 	user_role = UserRole.objects.get(user_id = user_obj)
 	user_role_info = user_role.role_id.name
-	return render(request,'video_chatt_app/home.html',{'user_role_info':user_role_info})
+	if user_role_info == 'teacher':
+		return render(request,'video_chatt_app/home.html',{'user_role_info':user_role_info})
+	else:
+		return redirect('/join_meeting/')
 
 
 # def client(request,room_name):
@@ -24,6 +27,8 @@ def index(request):
 def create_meeting(request):
 	user_obj = User.objects.get(username = request.user.username)
 	subject_list = subject_teacher.objects.filter(user_id = user_obj)
+	user_role = UserRole.objects.get(user_id = user_obj)
+	user_role_info = user_role.role_id.name
 	topic_list = []
 	for subject in subject_list:
 		topic_obj = Topic.objects.filter(subject_id = subject.subject_id)
@@ -31,7 +36,8 @@ def create_meeting(request):
 	print(topic_list)
 	data = {
 		'subject_list':subject_list,
-		'topic_list':topic_list
+		'topic_list':topic_list,
+		'user_role_info':user_role_info
 	}
 	return render(request,'video_chatt_app/create_meeting.html',context=data)
 
@@ -61,7 +67,10 @@ def schedule_meeting(request):
 
 @login_required
 def join_meeting(request):
-	return render(request,'video_chatt_app/join_meeting.html')
+	user_obj = User.objects.get(username = request.user.username)
+	user_role = UserRole.objects.get(user_id = user_obj)
+	user_role_info = user_role.role_id.name
+	return render(request,'video_chatt_app/join_meeting.html',{'user_role_info':user_role_info})
 
 
 @login_required
