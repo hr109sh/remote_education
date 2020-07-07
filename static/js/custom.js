@@ -40,6 +40,24 @@ function createRoom(room_name , display_name){
 }
 
 
+function QustionInteral(meeting_id) {
+    $.ajax({
+        url: '/get_question/',
+        data: {
+            'meetingId': meeting_id,
+        },
+        dataType: 'json',
+        success: function (data) {
+            $('.modal-body').html('')
+            $("#exampleModalCenter").modal("hide");
+            $('.modal-body').append("<p>"+data.question+"</p>");
+            $(".modal-body").append( "<p id ='report_id'>"+data.student_report_id+"</p>" );
+            $("#exampleModalCenter").modal("show");
+        }
+    });
+}
+
+
 $('#join-meeting-btn').click(function(){
 	var meeting_name = $('#meeting-name').val();
 	var meeting_id = $('#meetingid').val();
@@ -65,6 +83,7 @@ $('#join-meeting-btn').click(function(){
 							createRoom(meeting_id ,meeting_name);
         				}
       				});
+                    setInterval( function() { QustionInteral(meeting_id); }, 100000);
         		}
         		else{
         			alert('fail')
@@ -79,4 +98,32 @@ $('#join-meeting-btn').click(function(){
 });
 
 
+$('#yes-answer').click(function(){
+    var studentReport_id = document.querySelector('#report_id').innerText;
+   $.ajax({
+        url: '/question_response/',
+        data: {
+            'studentReportId': studentReport_id,
+            'responseAnswer':'Yes'
+        },
+        dataType: 'json',
+        success: function (data) {
+            $("#exampleModalCenter").modal("hide");
+        }
+    });
+});
 
+$('#no-answer').click(function(){
+    var studentReport_id = document.querySelector('#report_id').innerText;
+    $.ajax({
+        url: '/question_response/',
+        data: {
+            'studentReportId': studentReport_id,
+            'responseAnswer':'No'
+        },
+        dataType: 'json',
+        success: function (data) {
+            $("#exampleModalCenter").modal("hide");
+        }
+    });
+});

@@ -32,9 +32,15 @@ class Topic(models.Model):
 	topic_name = models.CharField(max_length = 100)
 	subject_id = models.ForeignKey(Subject,on_delete=models.CASCADE)
 
+	def __str__(self):
+		return self.topic_name
+
 class Questions(models.Model):
 	topic_id = models.ForeignKey(Topic,on_delete = models.CASCADE)
 	question = models.TextField()
+
+	def __str__(self):
+		return self.question
 
 class Answer(models.Model):
 	question_id = models.ForeignKey(Questions,on_delete = models.CASCADE)
@@ -68,5 +74,5 @@ class StudentReport(models.Model):
 	question_id = models.ForeignKey(Questions,on_delete = models.CASCADE)
 	question_time = models.DateTimeField(auto_now_add = True)
 	answer_time = models.DateTimeField(null=True)
-	answer_corrent = models.CharField(max_length = 100)
+	answer_corrent = models.CharField(max_length = 100,null = True)
 

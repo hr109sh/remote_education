@@ -10,8 +10,9 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <!--<a class="dropdown-item" href="#">All</a>-->
-                            <a class="dropdown-item" href="#">Grade 1</a>
-                            <a class="dropdown-item" href="#">Grade 2</a>
+                            {%for grade in grade_obj%}
+                            <a class="dropdown-item" href="#">Grade{{grade.student_grade}}</a>
+                            {%endfor%}
                         </div>
                     </div>
 
@@ -21,9 +22,9 @@
                             Subject
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Maths</a>
-                            <a class="dropdown-item" href="#">Science</a>
-                            <a class="dropdown-item" href="#">Geography</a>
+                          {%for subject in subject_obj%}
+                            <a class="dropdown-item" href="#">{{subject.subject_name}}</a>
+                          {%endfor%}
                         </div>
                     </div>
 
@@ -33,9 +34,9 @@
                             Topic
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Numbers</a>
-                            <a class="dropdown-item" href="#">Another Action</a>
-                            <a class="dropdown-item" href="#">Something else is here</a>
+                          {%for topic in topic_obj%}
+                            <a class="dropdown-item" href="#">{{topic.topic_name}}</a>
+                          {%endfor%}
                         </div>
                     </div>
 
