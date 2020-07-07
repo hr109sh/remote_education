@@ -48,11 +48,16 @@ function QustionInteral(meeting_id) {
         },
         dataType: 'json',
         success: function (data) {
-            $('.modal-body').html('')
-            $("#exampleModalCenter").modal("hide");
-            $('.modal-body').append("<p>"+data.question+"</p>");
-            $(".modal-body").append( "<p id ='report_id'>"+data.student_report_id+"</p>" );
-            $("#exampleModalCenter").modal("show");
+            // $('.modal-body').html('')
+            // $("#exampleModalCenter").modal("hide");
+            // $('.modal-body').append("<p>"+data.question+"</p>");
+            // $(".modal-body").append( "<p id ='report_id' style='display:none'>"+data.student_report_id+"</p>" );
+            // $("#exampleModalCenter").modal("show");
+            $('input[name="optradio"]').prop('checked', false);
+            $('#question').html('')
+            $('#question').append("<p>"+data.question+"</p>");
+            $("#question").append( "<p id ='report_id' style='display:none;'>"+data.student_report_id+"</p>" );
+            $("#myToast").toast("show");
         }
     });
 }
@@ -83,7 +88,10 @@ $('#join-meeting-btn').click(function(){
 							createRoom(meeting_id ,meeting_name);
         				}
       				});
-                    setInterval( function() { QustionInteral(meeting_id); }, 100000);
+                    setInterval( function() { 
+                                        QustionInteral(meeting_id);
+                                        $("#myToast").toast("hide");
+                                         }, 10000);
         		}
         		else{
         			alert('fail')
@@ -95,6 +103,23 @@ $('#join-meeting-btn').click(function(){
 		$('#join-meeting-alert').html('Please Enter value');
 		$('#join-meeting-alert').css('display','block');
 	}
+});
+
+
+$('.myanswer').change(function(){
+    var studentReport_id = document.querySelector('#report_id').innerText;
+    var selValue = $("input[type='radio']:checked").val();
+   $.ajax({
+        url: '/question_response/',
+        data: {
+            'studentReportId': studentReport_id,
+            'responseAnswer':selValue
+        },
+        dataType: 'json',
+        success: function (data) {
+            $("#myToast").toast("hide");
+        }
+    });
 });
 
 

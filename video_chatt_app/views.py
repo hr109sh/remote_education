@@ -11,19 +11,22 @@ import random
 @login_required
 def index(request):
 	user_obj = User.objects.get(username = request.user.username)
-	user_role = UserRole.objects.get(user_id = user_obj)
+	user_role = UserRole.objects.filter(user_id = user_obj)[0]
+	user_grade = UserRole.objects.filter(user_id = user_obj)
+	subject_list = subject_teacher.objects.filter(user_id = user_obj)
 	user_role_info = user_role.role_id.name
-	subject_obj = Subject.objects.all()
-	topic_obj = Topic.objects.all()
-	grade_obj = UserGrade.objects.all()
-	role_obj = Role.objects.get(name = 'student')
-	requested_user = UserRole.objects.filter(role_id = role_obj)
+	student_role_id = Role.objects.get(name = 'student')
+	student_list = UserRole.objects.filter(role_id = student_role_id)
+	topic_list = []
+	for subject in subject_list:
+		topic_obj = Topic.objects.filter(subject_id = subject.subject_id)
+		topic_list.append(topic_obj)
 	data = {
-		'subject_obj':subject_obj,
-		'topic_obj':topic_obj,
-		'grade_obj':grade_obj,
-		'requested_user':requested_user,
-		'user_role_info':user_role_info
+		'user_role_info':user_role_info,
+		'user_grade':user_grade,
+		'subject_list':subject_list,
+		'topic_list':topic_list,
+		'student_list':student_list
 
 	}
 	if user_role_info == 'teacher':
@@ -40,13 +43,12 @@ def index(request):
 def create_meeting(request):
 	user_obj = User.objects.get(username = request.user.username)
 	subject_list = subject_teacher.objects.filter(user_id = user_obj)
-	user_role = UserRole.objects.get(user_id = user_obj)
+	user_role = UserRole.objects.filter(user_id = user_obj)[0]
 	user_role_info = user_role.role_id.name
 	topic_list = []
 	for subject in subject_list:
 		topic_obj = Topic.objects.filter(subject_id = subject.subject_id)
 		topic_list.append(topic_obj)
-	print(topic_list)
 	data = {
 		'subject_list':subject_list,
 		'topic_list':topic_list,
@@ -81,7 +83,7 @@ def schedule_meeting(request):
 @login_required
 def join_meeting(request):
 	user_obj = User.objects.get(username = request.user.username)
-	user_role = UserRole.objects.get(user_id = user_obj)
+	user_role = UserRole.objects.filter(user_id = user_obj)[0]
 	user_role_info = user_role.role_id.name
 	return render(request,'video_chatt_app/join_meeting.html',{'user_role_info':user_role_info})
 
@@ -120,7 +122,7 @@ def student_join_meeting(request):
 
 def upload_question(request):
 	user_obj = User.objects.get(username = request.user.username)
-	user_role = UserRole.objects.get(user_id = user_obj)
+	user_role = UserRole.objects.filter(user_id = user_obj)[0]
 	user_role_info = user_role.role_id.name
 	return render(request,'video_chatt_app/upload_question.html',{'user_role_info':user_role_info})
 

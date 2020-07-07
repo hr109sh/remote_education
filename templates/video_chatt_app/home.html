@@ -2,56 +2,50 @@
 {%block content%}
             <div class="container-fluid">
                 <h1 class="mt-4"></h1>
+
                 <div class="row">
-                    <div class="col">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Grade
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <!--<a class="dropdown-item" href="#">All</a>-->
-                            {%for grade in grade_obj%}
-                            <a class="dropdown-item" href="#">Grade{{grade.student_grade}}</a>
+                    <div class="col-md-2">
+                        <select id="select-grade" class="btn btn-outline-primary dropdown-toggle  dropdown hard-code" searchable="Search here..">
+                            <option class="dropdown-item" value="" disabled selected>Choose Grade</option>
+                            {%for grade in user_grade%}
+                            <option class="dropdown-item" value="{{grade.grade_id.student_grade}}">{{grade.grade_id.student_grade}}</option>
                             {%endfor%}
-                        </div>
+                        </select>
+
+                    </div>
+                    
+                    <div class="col-md-2">
+                        <select id="select-subject" class="btn btn-outline-primary dropdown-toggle  dropdown hard-code" searchable="Search here.." onchange="appendValue()">
+                            <option class="dropdown-item" value="" disabled selected>Choose Subject</option>
+                            {%for subject in subject_list%}
+                            <option class="dropdown-item" value="{{subject.subject_id.subject_name}}">{{subject.subject_id.subject_name}}</option>
+                            {%endfor%}
+                        </select>
+
+                    </div>
+                    <div class="col-md-2">
+                            <select id="select-topic" class="btn btn-outline-primary dropdown-toggle dropdown hard-code" searchable="Search here..">
+                                <option value="" disabled selected>Choose Topic</option>
+                            </select>
+
+                    </div>
+                    <div class="col-md-2">
+                        <select id="select-student" class="btn btn-outline-primary dropdown-toggle  dropdown" searchable="Search here..">
+                            <option value="" disabled selected>Select Student</option>
+                            {%for student in student_list%}
+                            <option class="dropdown-item" value="1">{{student.user_id}}</option>
+                            {%endfor%}
+                        </select>
+
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-primary" id = "generate-btn">Generate</button>
+
                     </div>
 
-                    <div class="col">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Subject
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          {%for subject in subject_obj%}
-                            <a class="dropdown-item" href="#">{{subject.subject_name}}</a>
-                          {%endfor%}
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Topic
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          {%for topic in topic_obj%}
-                            <a class="dropdown-item" href="#">{{topic.topic_name}}</a>
-                          {%endfor%}
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Student
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">John Doe</a>
-                            <a class="dropdown-item" href="#">Rachel Green</a>
-                            <a class="dropdown-item" href="#">Sheldon Cooper</a>
-                        </div>
-                    </div>
                 </div>
+
+
                 <div class="row">
                     <div class="col">
                         <!-- Card -->
@@ -60,9 +54,9 @@
                             <!-- Card image -->
                             <div class="view overlay">
                                     <div class="card-1">
-                                        <div class="card-title font-weight-bold">Student Attentiveness</div>
+                                        <div class="card-title font-weight-bold">Sessions attended by</div>
                                         <div class="card-value-display rounded-circle">
-                                            <div class="card-value">82.5%</div>
+                                            <div class="card-value" id = "session-attended">25</div>
                                         </div>
 
                                     </div>
@@ -74,10 +68,7 @@
 
                             <!-- Card content -->
                             <div class="card-body">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-                                    standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled 
-                                    it to make a type specimen book.</p>
-
+                                <p>The total number of students attending the sessions scheduled by you</p>
                             </div>
 
                         </div>
@@ -90,9 +81,9 @@
                             <!-- Card image -->
                             <div class="view overlay">
                                     <div class="card-2">
-                                        <div class="card-title font-weight-bold">Student Attentiveness</div>
+                                        <div class="card-title font-weight-bold">Student Attentiveness (%)</div>
                                         <div class="card-value-display rounded-circle">
-                                            <div class="card-value">82.5%</div>
+                                            <div class="card-value" id = "session-attentiveness" >82.5%</div>
                                         </div>
 
                                     </div>
@@ -104,10 +95,7 @@
 
                             <!-- Card content -->
                             <div class="card-body">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-                                    standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled 
-                                    it to make a type specimen book.</p>
-
+                                <p>The average attentiveness percentage of the students based on the selected filters</p>
                             </div>
 
                         </div>
@@ -120,9 +108,9 @@
                             <!-- Card image -->
                             <div class="view overlay">
                                     <div class="card-3">
-                                        <div class="card-title font-weight-bold">Student Attentiveness</div>
+                                        <div class="card-title font-weight-bold">Accurate Response (%)</div>
                                         <div class="card-value-display rounded-circle">
-                                            <div class="align-middle card-value ">82.5%</div>
+                                            <div class="align-middle card-value " id = "session-Response" >82.5%</div>
                                         </div>
 
                                     </div>
@@ -134,9 +122,7 @@
 
                             <!-- Card content -->
                             <div class="card-body">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-                                    standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled 
-                                    it to make a type specimen book.</p>
+                                <p>The average accurate response percentage of the students based on the selected filters</p>
                             </div>
 
                         </div>
@@ -145,5 +131,92 @@
 
                 </div>
             </div>
+<script>
+function appendValue(){
+    var selected_value = $('#select-subject').val();
+    $('#select-topic').html('<option value="" disabled selected>Choose Topic</option>');
+    {%for topic_item in topic_list%}
+      {%for topic in topic_item%}
+        var subject_name = '{{topic.subject_id.subject_name}}'
+        if (subject_name == selected_value){
+          $('#select-topic').append("<option class='dropdown-item' value ='{{topic.topic_name}}'>"+'{{topic.topic_name}}'+"</option>");
+        }
+      {%endfor%}
+    {%endfor%}
+  }
 
+$('.hard-code').change(function(){
+    var grade_value = $('#select-grade').val();
+    var subject_value  = $('#select-subject').val();
+    var topic_value = $('#select-topic').val();
+
+    if (grade_value && subject_value && topic_value){
+        if (grade_value == '1' && subject_value == 'Mathematics' && topic_value == 'Calculus'){
+            $('#session-attended').html(24);
+            $('#session-attentiveness').html('70%');
+            $('#session-Response').html('65%');
+        }
+        else if (grade_value == '2' && subject_value == 'Mathematics' && topic_value == 'Calculus'){
+            $('#session-attended').html(24);
+            $('#session-attentiveness').html('70%');
+            $('#session-Response').html('65%');
+
+        }
+        else if (grade_value == '3' && subject_value == 'Mathematics' && topic_value == 'Calculus'){
+            $('#session-attended').html(24);
+            $('#session-attentiveness').html('70%');
+            $('#session-Response').html('65%');
+        }
+        else if (grade_value == '1' && subject_value == 'Physics' && topic_value == 'Calculus'){
+            $('#session-attended').html(24);
+            $('#session-attentiveness').html('70%');
+            $('#session-Response').html('65%');
+        }
+        else if (grade_value == '2' && subject_value == 'Physics' && topic_value == 'Calculus'){
+            $('#session-attended').html(24);
+            $('#session-attentiveness').html('70%');
+            $('#session-Response').html('65%');
+        }
+        else if (grade_value == '3' && subject_value == 'Physics' && topic_value == 'Calculus'){
+            $('#session-attended').html(24);
+            $('#session-attentiveness').html('70%');
+            $('#session-Response').html('65%');
+        }
+
+
+    }
+    else if (grade_value && subject_value || topic_value){
+        if(grade_value )
+
+    }
+    else if (grade_value || subject_value || topic_value){
+        if (grade_value != null){
+            if (grade_value == '1'){
+                $('#session-attended').html(24);
+                $('#session-attentiveness').html('70%');
+                $('#session-Response').html('65%');
+            }
+            else if(grade_value == '2'){
+                $('#session-attended').html(22);
+                $('#session-attentiveness').html('80%');
+                $('#session-Response').html('72%');
+            }
+            else{
+                $('#session-attended').html(23);
+                $('#session-attentiveness').html('90%');
+                $('#session-Response').html('67%');
+            }
+            
+        }
+        else if(subject_value != null){
+            $('#session-attended').html(20);
+            $('#session-attentiveness').html('80%');
+            $('#session-Response').html('62%');
+        }
+        else{
+            $('#session-attended').html(18);
+        }
+    }
+});
+</script>
 {%endblock%}

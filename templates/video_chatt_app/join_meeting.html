@@ -22,7 +22,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -37,8 +37,37 @@
     </div>
   </div>
 </div>
+ -->
+
+
+            <div class="container-fluid">
+                <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;"></div>
+                <div class="toast" id="myToast" data-autohide="false" style="position: absolute; bottom: 1rem; right: 1rem;">
+                    <div class="toast-header">
+                        <strong class="mr-auto"><i class="fa fa-grav"></i> Question</strong>
+                    </div>
+                    <div class="toast-body">
+                        <div id = "question"></div>
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                              <input type="radio"  class="form-check-input myanswer" name="optradio">Yes
+                            </label>
+                          </div>
+                          <div class="form-check-inline">
+                            <label class="form-check-label">
+                              <input type="radio" class="form-check-input myanswer" name="optradio">No
+                            </label>
+                          </div>
+                          <div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+
+
+
 <script>
   var logedin_user = '{{ user.get_username }}'
-
 </script>
 {%endblock%}

@@ -10,6 +10,7 @@
       <div class="alert alert-danger" id = "create-meeting-alet" role="alert" style="width:58%;margin-left:21%;display:none;">
       </div>
         <select name="subject" id="SubjectDropdown" class="form-control fadeIn" style="width:58%;margin-left:21%" onchange="appendValue()">
+          <option class="dropdown-item" value="" disabled selected>Choose Subject</option>
           {%for subject in subject_list%}
             <option value="{{subject.subject_id.subject_name}}">{{subject.subject_id.subject_name}}</option>
           {%endfor%}
