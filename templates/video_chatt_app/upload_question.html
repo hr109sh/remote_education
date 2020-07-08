@@ -1,4 +1,191 @@
 {%extends 'video_chatt_app/base.html'%}
 {%block content%}
-<h1>Under progress</h1>
+  <style>
+    .background {
+      background-color: #f6f6f6;
+    }
+
+    .shadow {
+      -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+      box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+      -webkit-border-radius: 5px 5px 5px 5px;
+      border-radius: 5px 5px 5px 5px;
+      margin: 5px 20px 40px 20px;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+  </style>
+        <form class="well form-horizontal border shadow p-5 background" action=" " method="post"
+          id="question_form" style="margin-top: 1rem;">
+          <fieldset>
+
+            <!-- Form Name -->
+            <legend>
+              <center>
+                <div>
+                  <h1 style="color:#56baed">Upload Questions</h1>
+                </div>
+              </center>
+            </legend><br>
+
+            <!-- Text input-->
+            <!-- <center> -->
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label class="col-md-12 control-label">Grade : </label>
+                  <div class="col-md-12 selectContainer">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                      <select name="grade" class="form-control selectpicker">
+                        <option value="">Select your Grade</option>
+                        <option>Grade 1</option>
+                        <option>Grade 2</option>
+                        <option>Grade 3</option>
+
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label class="col-md-12 control-label">Subject :</label>
+                  <div class="col-md-12 selectContainer">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                      <select name="subject" class="form-control selectpicker">
+                        <option value="">Select your Subject</option>
+                        <option>English</option>
+                        <option>Science</option>
+                        <option>History</option>
+                        <option>Geography</option>
+
+
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label class="col-md-12 control-label">Topic : </label>
+                  <div class="col-md-12 selectContainer">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                      <select name="topic" class="form-control selectpicker">
+                        <option value="">Select your Topic </option>
+                        <option>plants and animals </option>
+                        <option>fibre and fabric</option>
+                        <option>chemical reactions </option>
+                        <option>digestive system</option>
+                        <option> respiratory system</option>
+                        <option> solar system</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label class="col-md-12 control-label">Question :</label>
+                  <div class="col-md-12 inputGroupContainer">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input name="question" placeholder="Questions" class="form-control" type="text">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label class="col-md-12 control-label">Answer 1 :</label>
+                  <div class="col-md-12 inputGroupContainer">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input name="a1" placeholder="Answer 1 " class="form-control" type="text">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label class="col-md-12 control-label">Answer 2:</label>
+                  <div class="col-md-12 inputGroupContainer">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input name="a2" placeholder="Answer 2" class="form-control" type="text">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label class="col-md-12 control-label">Correct Answer :</label>
+                  <div class="col-md-12 inputGroupContainer">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input name="correct_ans" placeholder="Correct Answer" class="form-control" type="text">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label class="col-md-12 control-label">Import Questions:</label>
+                  <div class="col-md-12 inputGroupContainer">
+                    <div class="custom-file mb-3">
+                      <input type="file" class="custom-file-input background" id="customFile" name="filename">
+                      <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <center>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <br>
+                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit"
+                    class="btn btn-primary"
+                    style="background-color: #56baed;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span
+                      class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                </div>
+              </div>
+            </center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- Button -->
+
+            <!-- </center> -->
+
+          </fieldset>
+        </form>
 {%endblock%}

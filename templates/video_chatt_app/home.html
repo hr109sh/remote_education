@@ -1,5 +1,13 @@
 {%extends 'video_chatt_app/base.html'%}
 {%block content%}
+<style>
+    .card-title.font-weight-bold {
+    font-size: larger;
+    padding-top: 35px;
+    margin-left: 57px;
+    color: white;
+}
+    </style>
             <div class="container-fluid">
                 <h1 class="mt-4"></h1>
 
@@ -39,7 +47,7 @@
 
                     </div>
                     <div class="col-md-2">
-                        <button type="button" class="btn btn-primary" id = "generate-btn">Generate</button>
+                        <button type="button" class="btn btn-primary" id = "generate-btn">Download</button>
 
                     </div>
 
@@ -56,7 +64,7 @@
                                     <div class="card-1">
                                         <div class="card-title font-weight-bold">Sessions attended by</div>
                                         <div class="card-value-display rounded-circle">
-                                            <div class="card-value" id = "session-attended">25</div>
+                                            <div class="card-value" id = "session-attended" style="    margin-left: 34%;">25</div>
                                         </div>
 
                                     </div>
@@ -81,7 +89,7 @@
                             <!-- Card image -->
                             <div class="view overlay">
                                     <div class="card-2">
-                                        <div class="card-title font-weight-bold">Student Attentiveness (%)</div>
+                                        <div class="card-title font-weight-bold" >Student Attentiveness (%)</div>
                                         <div class="card-value-display rounded-circle">
                                             <div class="card-value" id = "session-attentiveness" >82.5%</div>
                                         </div>
@@ -152,53 +160,82 @@ $('.hard-code').change(function(){
 
     if (grade_value && subject_value && topic_value){
         if (grade_value == '1' && subject_value == 'Mathematics' && topic_value == 'Calculus'){
-            $('#session-attended').html(24);
-            $('#session-attentiveness').html('70%');
+            $('#session-attended').html(12);
+            $('#session-attentiveness').html('80%');
             $('#session-Response').html('65%');
         }
         else if (grade_value == '2' && subject_value == 'Mathematics' && topic_value == 'Calculus'){
-            $('#session-attended').html(24);
-            $('#session-attentiveness').html('70%');
-            $('#session-Response').html('65%');
+            $('#session-attended').html(13);
+            $('#session-attentiveness').html('90%');
+            $('#session-Response').html('79%');
 
         }
         else if (grade_value == '3' && subject_value == 'Mathematics' && topic_value == 'Calculus'){
-            $('#session-attended').html(24);
-            $('#session-attentiveness').html('70%');
-            $('#session-Response').html('65%');
+            $('#session-attended').html(15);
+            $('#session-attentiveness').html('80.5%');
+            $('#session-Response').html('71.6%');
         }
-        else if (grade_value == '1' && subject_value == 'Physics' && topic_value == 'Calculus'){
-            $('#session-attended').html(24);
-            $('#session-attentiveness').html('70%');
-            $('#session-Response').html('65%');
+        else if (grade_value == '1' && subject_value == 'Physics' && topic_value == 'Quantum physics'){
+            $('#session-attended').html(10);
+            $('#session-attentiveness').html('97%');
+            $('#session-Response').html('62%');
         }
-        else if (grade_value == '2' && subject_value == 'Physics' && topic_value == 'Calculus'){
-            $('#session-attended').html(24);
-            $('#session-attentiveness').html('70%');
-            $('#session-Response').html('65%');
+        else if (grade_value == '2' && subject_value == 'Physics' && topic_value == 'Quantum physics'){
+            $('#session-attended').html(12);
+            $('#session-attentiveness').html('82%');
+            $('#session-Response').html('67%');
         }
-        else if (grade_value == '3' && subject_value == 'Physics' && topic_value == 'Calculus'){
-            $('#session-attended').html(24);
-            $('#session-attentiveness').html('70%');
-            $('#session-Response').html('65%');
+        else if (grade_value == '3' && subject_value == 'Physics' && topic_value == 'Quantum physics'){
+            $('#session-attended').html(11);
+            $('#session-attentiveness').html('78%');
+            $('#session-Response').html('62%');
         }
 
 
     }
     else if (grade_value && subject_value || topic_value){
-        if(grade_value )
+        if(grade_value == 1 && subject_value == 'Mathematics'){
+            $('#session-attended').html(17);
+            $('#session-attentiveness').html('75%');
+            $('#session-Response').html('62%');
+        }
+        else if(grade_value == 2 && subject_value == 'Mathematics'){
+            $('#session-attended').html(14);
+            $('#session-attentiveness').html('71%');
+            $('#session-Response').html('64%');
+        }
+        else if(grade_value == 3 && subject_value == 'Mathematics'){
+            $('#session-attended').html(15);
+            $('#session-attentiveness').html('74%');
+            $('#session-Response').html('58%');
+        }
+        else if(grade_value == 1 && subject_value == 'Physics'){
+            $('#session-attended').html(16);
+            $('#session-attentiveness').html('90%');
+            $('#session-Response').html('65%');
+        }
+        else if(grade_value == 2 && subject_value == 'Physics'){
+            $('#session-attended').html(13);
+            $('#session-attentiveness').html('77%');
+            $('#session-Response').html('72%');
+        }
+        else if(grade_value == 3 && subject_value == 'Physics'){
+            $('#session-attended').html(11);
+            $('#session-attentiveness').html('88%');
+            $('#session-Response').html('63%');
+        }
 
     }
     else if (grade_value || subject_value || topic_value){
         if (grade_value != null){
             if (grade_value == '1'){
-                $('#session-attended').html(24);
-                $('#session-attentiveness').html('70%');
+                $('#session-attended').html(20);
+                $('#session-attentiveness').html('63.4%');
                 $('#session-Response').html('65%');
             }
             else if(grade_value == '2'){
                 $('#session-attended').html(22);
-                $('#session-attentiveness').html('80%');
+                $('#session-attentiveness').html('72.9%');
                 $('#session-Response').html('72%');
             }
             else{
@@ -209,12 +246,17 @@ $('.hard-code').change(function(){
             
         }
         else if(subject_value != null){
-            $('#session-attended').html(20);
-            $('#session-attentiveness').html('80%');
-            $('#session-Response').html('62%');
-        }
-        else{
-            $('#session-attended').html(18);
+           if(subject_value == 'Mathematics'){
+                $('#session-attended').html(23);
+                $('#session-attentiveness').html('90%');
+                $('#session-Response').html('67%');
+
+           }
+            if(subject_value == 'Physics'){
+                $('#session-attended').html(23);
+                $('#session-attentiveness').html('90%');
+                $('#session-Response').html('67%');
+           }
         }
     }
 });
