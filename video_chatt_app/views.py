@@ -88,9 +88,6 @@ def join_meeting(request):
 	return render(request,'video_chatt_app/join_meeting.html',{'user_role_info':user_role_info})
 
 
-@login_required
-def student_dashboard(request):
-	return render(request,'video_chatt_app/student_dashboard.html')
 
 
 def check_for_meetingid(request):
@@ -169,6 +166,12 @@ def question_response(request):
 		}
 	return JsonResponse(data)
 
+
+def student_info(request):
+	user_obj = User.objects.get(username = request.user.username)
+	user_role = UserRole.objects.filter(user_id = user_obj)[0]
+	user_role_info = user_role.role_id.name
+	return render(request, 'video_chatt_app/student_info.html',{'user_role_info':user_role_info})
 
 
 
