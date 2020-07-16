@@ -17,7 +17,10 @@ class UserGrade(models.Model):
 class UserRole(models.Model):
 	user_id= models.ForeignKey(User, on_delete=models.CASCADE)
 	role_id = models.ForeignKey(Role, on_delete=models.CASCADE)
-	grade_id = models.ForeignKey(UserGrade,on_delete=models.CASCADE)
+
+class TeacherGrade(models.Model):
+	user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+	grade_id  = models.ForeignKey(UserGrade, on_delete=models.CASCADE)
 
 
 
@@ -44,7 +47,10 @@ class Questions(models.Model):
 
 class Answer(models.Model):
 	question_id = models.ForeignKey(Questions,on_delete = models.CASCADE)
-	question_answer = models.CharField(max_length = 100)
+	option1 = models.CharField(max_length = 100)
+	option2 = models.CharField(max_length = 100)
+	correct_answer = models.CharField(max_length = 100,null = True)
+
 
 class subject_teacher(models.Model):
 	subject_id = models.ForeignKey(Subject,on_delete= models.CASCADE)

@@ -57,6 +57,7 @@ def create_meeting(request):
 	return render(request,'video_chatt_app/create_meeting.html',context=data)
 
 
+@login_required
 def schedule_meeting(request):
 	requested_sub = request.GET.get('subject', None)
 	requested_topic = request.GET.get('topic', None)
@@ -90,6 +91,7 @@ def join_meeting(request):
 
 
 
+@login_required
 def check_for_meetingid(request):
 	meeting_id = request.GET.get('meetingId', None)
 	try:
@@ -103,6 +105,7 @@ def check_for_meetingid(request):
 		}
 	return JsonResponse(data)
 
+@login_required
 def student_join_meeting(request):
 	meeting_id = request.GET.get('meetingId', None)
 	meeting_name = request.GET.get('meetingName', None)
@@ -117,13 +120,27 @@ def student_join_meeting(request):
 	return JsonResponse(data)
 
 
+@login_required
 def upload_question(request):
 	user_obj = User.objects.get(username = request.user.username)
+	subject_list = subject_teacher.objects.filter(user_id = user_obj)
+	grade_list = TeacherGrade.objects.filter(user_id = user_obj)
 	user_role = UserRole.objects.filter(user_id = user_obj)[0]
 	user_role_info = user_role.role_id.name
-	return render(request,'video_chatt_app/upload_question.html',{'user_role_info':user_role_info})
+	topic_list = []
+	for subject in subject_list:
+		topic_obj = Topic.objects.filter(subject_id = subject.subject_id)
+		topic_list.append(topic_obj)
+	data = {
+		'subject_list':subject_list,
+		'topic_list':topic_list,
+		'user_role_info':user_role_info,
+		'grade_list':grade_list
+	}
+	return render(request,'video_chatt_app/upload_question.html',context=data)
 
 
+@login_required
 def get_question(request):
 	meeting_id = request.GET.get('meetingId', None)
 	user_obj = User.objects.get(username = request.user.username)
@@ -134,6 +151,7 @@ def get_question(request):
 		questions_list.append(item)
 	random_question = random.choice(questions_list)
 	question_instance = Questions.objects.get(id = random_question.id)
+	answer_obj = Answer.objects.get(question_id = question_instance)
 	student_report_obj = StudentReport(
 							user_id = user_obj,
 							meeting_id = user_meeting_obj,
@@ -144,34 +162,73 @@ def get_question(request):
 		'student_report_id':student_report_obj.id,
 		'id':random_question.id,
 		'topic_id':random_question.topic_id.topic_name,
-		'question':random_question.question
+		'question':random_question.question,
+		'option1':answer_obj.option1,
+		'option2':answer_obj.option2
 	}
 	return JsonResponse(data)
 
 
+@login_required
 def question_response(request):
 	student_report_id = request.GET.get('studentReportId', None)
 	response_answer = request.GET.get('responseAnswer', None)
 	student_response_obj = StudentReport.objects.get(id = student_report_id)
-	correct_answer = Answer.objects.get(question_id = student_response_obj.question_id)
-	if correct_answer.question_answer == response_answer:
+	answer_obj = Answer.objects.get(question_id = student_response_obj.question_id)
+	print(response_answer)
+	print(answer_obj.correct_answer )
+	if answer_obj.correct_answer == response_answer:
 		student_response_obj.answer_corrent = 'yes'
+		student_response_obj.save()
 		data = {
 			'message':'Correct Answer'
 		}
 	else:
-		student_response_obj.answer_corrent = 'No'
+		student_response_obj.answer_corrent = 'no'
+		student_response_obj.save()
 		data = {
 			'message':'Wrong Answer'
 		}
 	return JsonResponse(data)
 
-
+@login_required
 def student_info(request):
 	user_obj = User.objects.get(username = request.user.username)
 	user_role = UserRole.objects.filter(user_id = user_obj)[0]
 	user_role_info = user_role.role_id.name
 	return render(request, 'video_chatt_app/student_info.html',{'user_role_info':user_role_info})
+
+
+@login_required
+def insert_question(request):
+	selected_grade = request.GET.get('selectedGrade', None)
+	selected_sub = request.GET.get('selectedSub', None)
+	selected_topic = request.GET.get('selectedTopic', None)
+	input_question = request.GET.get('inputQuestion', None)
+	option1 = request.GET.get('option_1', None)
+	option2 = request.GET.get('option_2', None)
+	selected_answer = request.GET.get('selectedAnswer', None)
+	if selected_answer == 'option1':
+		response_answer = option1
+	else:
+		response_answer = option2
+
+	topic_obj = Topic.objects.get(topic_name = selected_topic)
+	question_obj = Questions(topic_id = topic_obj,question = input_question)
+	question_obj.save()
+	answer_obj = Answer(
+					question_id = question_obj,
+					option1 = option1,
+					option2 = option2,
+					correct_answer = response_answer
+				)
+	answer_obj.save()
+
+	
+	data = {
+		'message':'Saved Sucessfully'
+	}
+	return JsonResponse(data)
 
 
 
