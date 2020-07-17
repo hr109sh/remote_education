@@ -173,6 +173,12 @@ def student_info(request):
 	user_role_info = user_role.role_id.name
 	return render(request, 'video_chatt_app/student_info.html',{'user_role_info':user_role_info})
 
+def intract_tutor(request):
+	user_obj = User.objects.get(username = request.user.username)
+	user_role = UserRole.objects.filter(user_id = user_obj)[0]
+	user_role_info = user_role.role_id.name
+	return render(request,'video_chatt_app/intract_tutor.html',{'user_role_info':user_role_info})
+
 
 
 	
