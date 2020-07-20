@@ -240,16 +240,16 @@ def question_response(request):
 		response_answer = request.GET.get('responseAnswer', None)
 		student_response_obj = StudentReport.objects.get(id = student_report_id)
 		answer_obj = Answer.objects.get(question_id = student_response_obj.question_id)
-		print(response_answer)
-		print(answer_obj.correct_answer )
 		if answer_obj.correct_answer == response_answer:
 			student_response_obj.answer_corrent = 'yes'
+			student_response_obj.answer_time = datetime.datetime.now()
 			student_response_obj.save()
 			data = {
 				'message':'Correct Answer'
 			}
 		else:
 			student_response_obj.answer_corrent = 'no'
+			student_response_obj.answer_time = datetime.datetime.now()
 			student_response_obj.save()
 			data = {
 				'message':'Wrong Answer'
