@@ -1,5 +1,80 @@
 {%extends 'video_chatt_app/base.html'%}
 {%block content%}
+<style>
+  .background {
+  background-color: #f6f6f6;
+}
+
+.shadow {
+  -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+  box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  margin: 5px 20px 40px 20px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-rounded {
+  border-radius: 1rem;
+  border: none;
+  margin-top:1rem;
+}
+
+.mycustom {
+  border-radius: 1rem;
+  position: relative;
+}
+
+.mycustom input[type=text] {
+  border-top-right-radius:1rem!important;
+  border-bottom-right-radius:1rem!important;
+  border: none;
+  width: 100%;
+  padding-right: 123px;
+}
+
+.mycustom .input-group-prepend {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  bottom: 4px;
+  z-index: 9;
+}
+</style>
+
+<div class="container" id="chatt-room">
+
+  <div class="well form-horizontal border shadow p-5 background" action=" " method="post" id="question_form"
+    style="margin-top: 1rem; height:550px">
+    <legend>
+      <center>
+        <div>
+          <h1 style="color:#56baed">Host a Meeting</h1>
+        </div>
+      </center>
+    </legend><br>
+      <!-- <div>
+      <input type="text" class="form-control form-rounded" placeholder="Enter Name">
+    </div> -->
+    <div>
+      <select name="subject" id="SubjectDropdown" class="form-control form-rounded" onchange="appendValue()">
+        <option class="dropdown-item" value="" disabled selected>Choose Subject</option>
+        {%for subject in subject_list%}
+          <option value="{{subject.subject_id.subject_name}}">{{subject.subject_id.subject_name}}</option>
+        {%endfor%}
+      </select>
+    </div>
+  <div>
+    <select name="topic" id="topicDropdown" class="form-control form-rounded">
+    </select>
+  <div class="input-group mycustom">
+    <!-- <input type="text" class="form-control form-rounded" placeholder="Enter Meeting ID"> -->
+    <div class="input-group-prepend">
+      <input type="submit" id="create-meeting" value="submit" class="btn btn-primary btn-sm" id="inputGroupPrepend2" style="border-radius: 1rem;margin-top: 1rem;height: 2rem;">
 <div class ="row" id="chatt-room">
   <div class="col-md-3"></div>
   <div class="col-md-6">
@@ -27,7 +102,7 @@
         <input type="submit" class="fadeIn first" value="Start Meeting" id="create-meeting">
     </div>
   </div>
-  <div class="col-md-3"></div>
+</div>
 </div>
 <script>
   var logedin_user = '{{ user.get_username }}';

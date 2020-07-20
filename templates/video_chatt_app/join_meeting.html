@@ -1,23 +1,33 @@
 {%extends 'video_chatt_app/base.html'%}
 {%block content%}
-<div class="row" id ="vedio-chatt-room">
-	<div class="col-md-3">
-	</div>
-	<div class="col-md-6">
-		<div id="formContent">
-        	<div class="fadeIn first">
-            	<h1 style="color:#56baed">Join Meeting</h1>
-        	</div>
-        	<div class="alert alert-danger" role="alert" id = "join-meeting-alert" style="width:80%;margin-left:9%;display:none;">
-			</div>
-        	<input type="text" id="meeting-name" class="fadeIn first" name="Name" placeholder="Enter Name">
-            <input type="text" id="meetingid" class="fadeIn first" name="Meeting ID" placeholder="Enter Meeting ID">
-            <input type="submit" class="fadeIn first" value="Join Now" id = "join-meeting-btn">
-    	</div>
-	</div>
-	<div class="col-md-3">
-	</div>
 
+<div class="container" id ="vedio-chatt-room">
+
+  <div class="well form-horizontal border shadow p-5 background" id="formContent"
+    style="margin-top: 1rem; height:550px">
+    <legend>
+      <center>
+        <div>
+          <h1 style="color:#56baed">Join a Meeting</h1>
+        </div>
+      </center>
+    </legend><br>
+    <!-- <div>
+      <input type="text" class="form-control form-rounded" placeholder="Enter Name">
+    </div> -->
+    <div class="alert alert-danger" role="alert" id = "join-meeting-alert" style="width:80%;margin-left:9%;display:none;"></div>
+    <!-- <div class="well form-horizontal border shadow p-5 background"  style="margin-top: 1rem; height:550px"> -->
+      <div>
+        <input type="text" id="meeting-name" style="margin-top:7rem" class="form-control form-rounded" placeholder="Enter Name">
+    </div>
+    <div class="input-group mycustom">
+      <input type="text" id="meetingid" class="form-control form-rounded" placeholder="Enter Meeting ID">
+      <div class="input-group-prepend">
+        <input type="submit" vlaue="submit"  id="join-meeting-btn" class="btn btn-primary btn-sm" id="inputGroupPrepend2" style="border-radius: 1rem;">
+      </div>
+    </div>
+  <!-- </div> -->
+  </div>
 </div>
 
 
