@@ -31,25 +31,6 @@
 </div>
 
 
-<!-- Modal -->
-<!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Quick Question</h5>
-      </div>
-      <div class="modal-body">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" id = "yes-answer">Yes</button>
-        <button type="button" class="btn btn-primary" id = "no-answer">No</button>
-      </div>
-    </div>
-  </div>
-</div>
- -->
-
-
             <div class="container-fluid">
                 <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;"></div>
                 <div class="toast" id="myToast" data-autohide="false" style="position: absolute; bottom: 1rem; right: 1rem;">
@@ -59,13 +40,13 @@
                     <div class="toast-body">
                         <div id = "question"></div>
                         <div class="form-check-inline">
-                            <label class="form-check-label">
-                              <input type="radio"  class="form-check-input myanswer" name="optradio">Yes
+                            <label class="form-check-label" id="option1">
+                              <input type="radio"  class="form-check-input myanswer" name="optradio" value ="" id="input-option1">
                             </label>
                           </div>
                           <div class="form-check-inline">
-                            <label class="form-check-label">
-                              <input type="radio" class="form-check-input myanswer" name="optradio">No
+                            <label class="form-check-label" id="option2">
+                              <input type="radio" class="form-check-input myanswer" name="optradio" value ="" id="input-option2">
                             </label>
                           </div>
                           <div>

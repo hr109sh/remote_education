@@ -14,4 +14,6 @@ urlpatterns = [
 	path('question_response/',views.question_response,name="question_response"),
 	path('student_info/',views.student_info,name="student_info"),
 	path('intrac_tutor/',views.intract_tutor,name="intrac_tutor")
+	path('insert_question/',views.insert_question,name= "insert_question"),
+	path('get_dashboard_data/',views.get_dashboard_data,name="get_dashboard_data")
 ]

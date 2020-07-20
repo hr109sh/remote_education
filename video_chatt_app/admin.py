@@ -15,3 +15,5 @@ admin.site.register(subject_teacher)
 admin.site.register(user_parent)
 admin.site.register(StudentReport)
 admin.site.register(UserGrade)
+admin.site.register(TeacherGrade)
+

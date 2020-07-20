@@ -2,12 +2,14 @@
 $('#create-meeting').click(function(){
 	var subject = $('#SubjectDropdown').val();
 	var topic = $('#topicDropdown').val();
-	if (subject && topic){
+    var grade = $('#GradeDropdown').val();
+	if (subject && topic && grade){
 		$.ajax({
         	url: '/schedule_meeting/',
         	data: {
           		'subject': subject,
-          		'topic' : topic
+          		'topic' : topic,
+                'grade' : grade
         	},
         	dataType: 'json',
         	success: function (data) {
@@ -48,11 +50,12 @@ function QustionInteral(meeting_id) {
         },
         dataType: 'json',
         success: function (data) {
-            // $('.modal-body').html('')
-            // $("#exampleModalCenter").modal("hide");
-            // $('.modal-body').append("<p>"+data.question+"</p>");
-            // $(".modal-body").append( "<p id ='report_id' style='display:none'>"+data.student_report_id+"</p>" );
-            // $("#exampleModalCenter").modal("show");
+            $('#response-option1').remove();
+            $('#response-option2').remove();
+            $('#option1').append("<p id ='response-option1'>"+data.option1+"</p>");
+            $('#option2').append("<p id = 'response-option2'>"+data.option2+"</p>")
+            $('#input-option1').val(data.option1);
+            $('#input-option2').val(data.option2);
             $('input[name="optradio"]').prop('checked', false);
             $('#question').html('')
             $('#question').append("<p>"+data.question+"</p>");
@@ -122,33 +125,3 @@ $('.myanswer').change(function(){
     });
 });
 
-
-$('#yes-answer').click(function(){
-    var studentReport_id = document.querySelector('#report_id').innerText;
-   $.ajax({
-        url: '/question_response/',
-        data: {
-            'studentReportId': studentReport_id,
-            'responseAnswer':'Yes'
-        },
-        dataType: 'json',
-        success: function (data) {
-            $("#exampleModalCenter").modal("hide");
-        }
-    });
-});
-
-$('#no-answer').click(function(){
-    var studentReport_id = document.querySelector('#report_id').innerText;
-    $.ajax({
-        url: '/question_response/',
-        data: {
-            'studentReportId': studentReport_id,
-            'responseAnswer':'No'
-        },
-        dataType: 'json',
-        success: function (data) {
-            $("#exampleModalCenter").modal("hide");
-        }
-    });
-});
