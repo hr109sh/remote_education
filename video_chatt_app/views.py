@@ -123,18 +123,21 @@ def schedule_meeting(request):
 			user_meeting_obj = UserMeeting.objects.get(meeting_id = meeting_id)
 		except:
 			user_meeting_obj = 0
-	user_meeting = UserMeeting(
+	try:
+		user_meeting = UserMeeting(
 							user_id =  User.objects.get(username = request.user.username),
 							meeting_id = meeting_id,
 							grade_id = UserGrade.objects.get(student_grade = int(requested_grade)),
 							meeting_subject = Subject.objects.get(subject_name = requested_sub),
 							meeting_topic = Topic.objects.get(topic_name = requested_topic)
 							)
-	user_meeting.save()
-	data = {
-		'meeting_id':meeting_id
-	}
-	return JsonResponse(data)
+		user_meeting.save()
+		data = {
+			'meeting_id':meeting_id
+		}
+		return JsonResponse(data)
+	except Exception as err:
+		print('error fetching details:', err)
 
 
 @login_required
@@ -165,15 +168,18 @@ def check_for_meetingid(request):
 def student_join_meeting(request):
 	meeting_id = request.GET.get('meetingId', None)
 	meeting_name = request.GET.get('meetingName', None)
-	user_attandance_obj = User_attendence(
-							user_id = User.objects.get(username = request.user.username),
-							meeting_id = UserMeeting.objects.get(meeting_id = meeting_id)
-						)
-	user_attandance_obj.save()
-	data = {
-		'mesaage':'Marked Attandance'
-	}
-	return JsonResponse(data)
+	try:
+		user_attandance_obj = User_attendence(
+								user_id = User.objects.get(username = request.user.username),
+								meeting_id = UserMeeting.objects.get(meeting_id = meeting_id)
+							)
+		user_attandance_obj.save()
+		data = {
+			'mesaage':'Marked Attandance'
+		}
+		return JsonResponse(data)
+	except Exception as err:
+		print('error fetching details: ', err)
 
 
 @login_required
@@ -205,55 +211,62 @@ def get_question(request):
 	questions_list = []
 	for item in user_question:
 		questions_list.append(item)
-	random_question = random.choice(questions_list)
-	question_instance = Questions.objects.get(id = random_question.id)
-	answer_obj = Answer.objects.get(question_id = question_instance)
-	student_report_obj = StudentReport(
-							user_id = user_obj,
-							meeting_id = user_meeting_obj,
-							question_id = question_instance,
-						)
-	student_report_obj.save()
-	data = {
-		'student_report_id':student_report_obj.id,
-		'id':random_question.id,
-		'topic_id':random_question.topic_id.topic_name,
-		'question':random_question.question,
-		'option1':answer_obj.option1,
-		'option2':answer_obj.option2
-	}
-	return JsonResponse(data)
-
+	try:
+		random_question = random.choice(questions_list)
+		question_instance = Questions.objects.get(id = random_question.id)
+		answer_obj = Answer.objects.get(question_id = question_instance)
+		student_report_obj = StudentReport(
+								user_id = user_obj,
+								meeting_id = user_meeting_obj,
+								question_id = question_instance,
+							)
+		student_report_obj.save()
+		data = {
+			'student_report_id':student_report_obj.id,
+			'id':random_question.id,
+			'topic_id':random_question.topic_id.topic_name,
+			'question':random_question.question,
+			'option1':answer_obj.option1,
+			'option2':answer_obj.option2
+		}
+		return JsonResponse(data)
+	except Exception as err:
+		print('error fetching details:', err)
 
 @login_required
 def question_response(request):
-	student_report_id = request.GET.get('studentReportId', None)
-	response_answer = request.GET.get('responseAnswer', None)
-	student_response_obj = StudentReport.objects.get(id = student_report_id)
-	answer_obj = Answer.objects.get(question_id = student_response_obj.question_id)
-	if answer_obj.correct_answer == response_answer:
-		student_response_obj.answer_corrent = 'yes'
-		student_response_obj.answer_time = datetime.datetime.now()
-		student_response_obj.save()
-		data = {
-			'message':'Correct Answer'
-		}
-	else:
-		student_response_obj.answer_corrent = 'no'
-		student_response_obj.answer_time = datetime.datetime.now()
-		student_response_obj.save()
-		data = {
-			'message':'Wrong Answer'
-		}
-	return JsonResponse(data)
+	try:
+		student_report_id = request.GET.get('studentReportId', None)
+		response_answer = request.GET.get('responseAnswer', None)
+		student_response_obj = StudentReport.objects.get(id = student_report_id)
+		answer_obj = Answer.objects.get(question_id = student_response_obj.question_id)
+		print(response_answer)
+		print(answer_obj.correct_answer )
+		if answer_obj.correct_answer == response_answer:
+			student_response_obj.answer_corrent = 'yes'
+			student_response_obj.save()
+			data = {
+				'message':'Correct Answer'
+			}
+		else:
+			student_response_obj.answer_corrent = 'no'
+			student_response_obj.save()
+			data = {
+				'message':'Wrong Answer'
+			}
+		return JsonResponse(data)
+	except Exception as err:
+		print('error fetching details: ', err)
 
 @login_required
 def student_info(request):
-	user_obj = User.objects.get(username = request.user.username)
-	user_role = UserRole.objects.filter(user_id = user_obj)[0]
-	user_role_info = user_role.role_id.name
-	return render(request, 'video_chatt_app/student_info.html',{'user_role_info':user_role_info})
-
+	try:
+		user_obj = User.objects.get(username = request.user.username)
+		user_role = UserRole.objects.filter(user_id = user_obj)[0]
+		user_role_info = user_role.role_id.name
+		return render(request, 'video_chatt_app/student_info.html',{'user_role_info':user_role_info})
+	except Exception as err:
+		print('Error fetching details:', err)
 
 @login_required
 def insert_question(request):
@@ -268,24 +281,25 @@ def insert_question(request):
 		response_answer = option1
 	else:
 		response_answer = option2
+	try:
+		topic_obj = Topic.objects.get(topic_name = selected_topic)
+		question_obj = Questions(topic_id = topic_obj,question = input_question)
+		question_obj.save()
+		answer_obj = Answer(
+						question_id = question_obj,
+						option1 = option1,
+						option2 = option2,
+						correct_answer = response_answer
+					)
+		answer_obj.save()
 
-	topic_obj = Topic.objects.get(topic_name = selected_topic)
-	question_obj = Questions(topic_id = topic_obj,question = input_question)
-	question_obj.save()
-	answer_obj = Answer(
-					question_id = question_obj,
-					option1 = option1,
-					option2 = option2,
-					correct_answer = response_answer
-				)
-	answer_obj.save()
-
-	
-	data = {
-		'message':'Saved Sucessfully'
-	}
-	return JsonResponse(data)
-
+		
+		data = {
+			'message':'Saved Sucessfully'
+		}
+		return JsonResponse(data)
+	except Exception as err:
+		print('Error fetching details: ' , err)
 
 def get_dashboard_data(request):
 	selected_grade = request.GET.get('selectedGrade', None)
