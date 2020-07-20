@@ -2,12 +2,14 @@
 $('#create-meeting').click(function(){
 	var subject = $('#SubjectDropdown').val();
 	var topic = $('#topicDropdown').val();
-	if (subject && topic){
+    var grade = $('#GradeDropdown').val();
+	if (subject && topic && grade){
 		$.ajax({
         	url: '/schedule_meeting/',
         	data: {
           		'subject': subject,
-          		'topic' : topic
+          		'topic' : topic,
+                'grade' : grade
         	},
         	dataType: 'json',
         	success: function (data) {

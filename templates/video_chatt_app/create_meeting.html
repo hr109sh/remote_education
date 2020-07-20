@@ -8,7 +8,13 @@
         <h1 style="color:#56baed">Host Meeting</h1>
       </div>
       <div class="alert alert-danger" id = "create-meeting-alet" role="alert" style="width:58%;margin-left:21%;display:none;">
-      </div>
+      </div><br>
+        <select name="grade" id="GradeDropdown" class="form-control fadeIn" style="width:58%;margin-left:21%">
+          <option class="dropdown-item" value="" disabled selected>Choose Grade</option>
+          {%for grade in user_grade%}
+            <option value="{{grade.grade_id.student_grade}}">{{grade.grade_id.student_grade}}</option>
+          {%endfor%}
+        </select> <br>
         <select name="subject" id="SubjectDropdown" class="form-control fadeIn" style="width:58%;margin-left:21%" onchange="appendValue()">
           <option class="dropdown-item" value="" disabled selected>Choose Subject</option>
           {%for subject in subject_list%}
@@ -16,6 +22,7 @@
           {%endfor%}
         </select><br>
         <select name="topic" id="topicDropdown" class="form-control fadeIn" style="width:58%;margin-left:21%">
+          <option class="dropdown-item" value="" disabled selected>Choose Topic</option>
         </select><br>
         <input type="submit" class="fadeIn first" value="Start Meeting" id="create-meeting">
     </div>
@@ -28,6 +35,7 @@
   function appendValue(){
     var selected_value = $('#SubjectDropdown').val();
     $('#topicDropdown').html('');
+    $('#topicDropdown').append("<option class='dropdown-item' value='' disabled selected>Choose Topic</option>");
     {%for topic_item in topic_list%}
       {%for topic in topic_item%}
         var subject_name = '{{topic.subject_id.subject_name}}'

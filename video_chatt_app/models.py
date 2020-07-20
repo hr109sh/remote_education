@@ -65,6 +65,7 @@ class user_parent(models.Model):
 class UserMeeting(models.Model):
 	user_id = models.ForeignKey(User, on_delete=models.CASCADE)
 	meeting_id = models.IntegerField()
+	grade_id = models.ForeignKey(UserGrade,on_delete = models.CASCADE)
 	meeting_subject = models.ForeignKey(Subject,on_delete = models.CASCADE)
 	meeting_topic = models.ForeignKey(Topic,on_delete = models.CASCADE)
 	meet_start = models.DateTimeField(auto_now_add=True)
