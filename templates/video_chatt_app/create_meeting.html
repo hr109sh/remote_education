@@ -57,10 +57,15 @@
         </div>
       </center>
     </legend><br>
-      <!-- <div>
-      <input type="text" class="form-control form-rounded" placeholder="Enter Name">
-    </div> -->
+     <div class="alert alert-danger" id = "create-meeting-alet" role="alert" style="text-align:center;display:none;">
+      </div><br>
     <div>
+      <select name="grade" id="GradeDropdown" class="form-control form-rounded">
+        <option class="dropdown-item" value="" disabled selected>Choose Grade</option>
+        {%for grade in user_grade%}
+          <option value="{{grade.grade_id.student_grade}}">{{grade.grade_id.student_grade}}</option>
+        {%endfor%}
+      </select>
       <select name="subject" id="SubjectDropdown" class="form-control form-rounded" onchange="appendValue()">
         <option class="dropdown-item" value="" disabled selected>Choose Subject</option>
         {%for subject in subject_list%}
@@ -70,39 +75,11 @@
     </div>
   <div>
     <select name="topic" id="topicDropdown" class="form-control form-rounded">
+      <option class="dropdown-item" value="" disabled selected>Choose Topic</option>
     </select>
   <div class="input-group mycustom">
-    <!-- <input type="text" class="form-control form-rounded" placeholder="Enter Meeting ID"> -->
     <div class="input-group-prepend">
-      <input type="submit" id="create-meeting" value="submit" class="btn btn-primary btn-sm" id="inputGroupPrepend2" style="border-radius: 1rem;margin-top: 1rem;height: 2rem;">
-<div class ="row" id="chatt-room">
-  <div class="col-md-3"></div>
-  <div class="col-md-6">
-    <div id="formContent">
-      <div class="fadeIn first">
-        <h1 style="color:#56baed">Host Meeting</h1>
-      </div>
-      <div class="alert alert-danger" id = "create-meeting-alet" role="alert" style="width:58%;margin-left:21%;display:none;">
-      </div><br>
-        <select name="grade" id="GradeDropdown" class="form-control fadeIn" style="width:58%;margin-left:21%">
-          <option class="dropdown-item" value="" disabled selected>Choose Grade</option>
-          {%for grade in user_grade%}
-            <option value="{{grade.grade_id.student_grade}}">{{grade.grade_id.student_grade}}</option>
-          {%endfor%}
-        </select> <br>
-        <select name="subject" id="SubjectDropdown" class="form-control fadeIn" style="width:58%;margin-left:21%" onchange="appendValue()">
-          <option class="dropdown-item" value="" disabled selected>Choose Subject</option>
-          {%for subject in subject_list%}
-            <option value="{{subject.subject_id.subject_name}}">{{subject.subject_id.subject_name}}</option>
-          {%endfor%}
-        </select><br>
-        <select name="topic" id="topicDropdown" class="form-control fadeIn" style="width:58%;margin-left:21%">
-          <option class="dropdown-item" value="" disabled selected>Choose Topic</option>
-        </select><br>
-        <input type="submit" class="fadeIn first" value="Start Meeting" id="create-meeting">
-    </div>
-  </div>
-</div>
+      <input type="submit" id="create-meeting" value="submit" class="btn btn-primary btn-sm" id="create-meeting" style="border-radius: 1rem;margin-top: 1rem;height: 2rem;">
 </div>
 <script>
   var logedin_user = '{{ user.get_username }}';

@@ -22,6 +22,10 @@ class TeacherGrade(models.Model):
 	user_id = models.ForeignKey(User, on_delete=models.CASCADE)
 	grade_id  = models.ForeignKey(UserGrade, on_delete=models.CASCADE)
 
+class StudentGrade(models.Model):
+	user_id = models.ForeignKey(User,on_delete = models.CASCADE)
+	grade_id  = models.ForeignKey(UserGrade, on_delete=models.CASCADE)
+
 
 
 class Subject(models.Model):

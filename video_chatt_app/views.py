@@ -261,9 +261,32 @@ def student_info(request):
 		user_obj = User.objects.get(username = request.user.username)
 		user_role = UserRole.objects.filter(user_id = user_obj)[0]
 		user_role_info = user_role.role_id.name
-		return render(request, 'video_chatt_app/student_info.html',{'user_role_info':user_role_info})
+		student_grade = StudentGrade.objects.filter(user_id = user_obj)[0]
+		# accurate_response = get_student_attentivness(user_obj)
+		data = {
+			# 'student_grade':student_grade,
+			'user_role_info':user_role_info
+		}
+		return render(request, 'video_chatt_app/student_info.html',context=data)
 	except Exception as err:
 		print('Error fetching details:', err)
+
+
+# def get_student_attentivness(user_obj):
+# 	total_question = 0 
+# 	user_response = 0 
+# 	student_attentiveness = 0
+# 	studengt_response = StudentReport.objects.filter(user_id = user_obj)
+# 	total_question = total_question+len(studengt_response)
+# 	for response in studengt_response:
+# 		if response.answer_time:
+# 			user_response = user_response+1
+# 	if user_response and total_question:
+# 		student_attentiveness = "{:.2f}".format((user_response/total_question)*100)
+# 	return student_attentiveness
+
+# def get_student_accurate_response():
+# 	return 
 
 @login_required
 def insert_question(request):
