@@ -44,6 +44,11 @@
   bottom: 4px;
   z-index: 9;
 }
+
+.chatbox{
+  height:38%;
+  z-index: 100;
+}
 </style>
 
 <div class="container" id="chatt-room">
@@ -57,15 +62,18 @@
         </div>
       </center>
     </legend><br>
-     <div class="alert alert-danger" id = "create-meeting-alet" role="alert" style="text-align:center;display:none;">
-      </div><br>
+      <!-- <div>
+      <input type="text" class="form-control form-rounded" placeholder="Enter Name">
+    </div> -->
     <div>
-      <select name="grade" id="GradeDropdown" class="form-control form-rounded">
-        <option class="dropdown-item" value="" disabled selected>Choose Grade</option>
-        {%for grade in user_grade%}
-          <option value="{{grade.grade_id.student_grade}}">{{grade.grade_id.student_grade}}</option>
-        {%endfor%}
-      </select>
+    <select name="grade" id="GradeDropdown" class="form-control form-rounded">
+      <option class="dropdown-item" value="" disabled selected>Choose Grade</option>
+      {%for grade in user_grade%}
+        <option value="{{grade.grade_id.student_grade}}">{{grade.grade_id.student_grade}}</option>
+      {%endfor%}
+    </select>
+  </div>
+    <div>
       <select name="subject" id="SubjectDropdown" class="form-control form-rounded" onchange="appendValue()">
         <option class="dropdown-item" value="" disabled selected>Choose Subject</option>
         {%for subject in subject_list%}
@@ -75,11 +83,48 @@
     </div>
   <div>
     <select name="topic" id="topicDropdown" class="form-control form-rounded">
-      <option class="dropdown-item" value="" disabled selected>Choose Topic</option>
     </select>
   <div class="input-group mycustom">
+    <!-- <input type="text" class="form-control form-rounded" placeholder="Enter Meeting ID"> -->
     <div class="input-group-prepend">
-      <input type="submit" id="create-meeting" value="submit" class="btn btn-primary btn-sm" id="create-meeting" style="border-radius: 1rem;margin-top: 1rem;height: 2rem;">
+      <input type="submit" id="create-meeting" value="submit" class="btn btn-primary btn-sm" id="inputGroupPrepend2" style="border-radius: 1rem;margin-top: 1rem;height: 2rem;">
+</div>
+<div class="chatbox chatbox--tray chatbox--empty">
+  <div class="chatbox__title">
+      <h6><a href="#">Dashboard</a></h6>
+      <button class="chatbox__title__tray">
+          <span></span>
+      </button>
+  </div>
+  <div class="chatbox__body">
+      <div class="chatbox__body__message chatbox__body__message--left">
+        Session Time :
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" style="width:80%">40.25</div>
+        </div>
+        Attendance : 
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" style="width:100%">15 here</div>
+        </div>
+        Attentive : 
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" style="width:73%">73%</div>
+          <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" style="width:27%">27%</div>
+        </div>
+        Effective : 
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" style="width:60%">60%</div>
+          <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" style="width:40%">40%</div>
+        </div>
+        <div>Questions :
+          <span><a href="#">0/5</a></span>
+        </div>
+        <!-- <div>Polls Given :
+          <span><a href="#">0/1</a></span>
+        </div> -->
+      </div>
+  </div>
+</div>
 </div>
 <script>
   var logedin_user = '{{ user.get_username }}';
@@ -100,5 +145,25 @@
       {%endfor%}
     {%endfor%}
   }
+
+  (function($) {
+$(document).ready(function() {
+    var $chatbox = $('.chatbox'),
+        $chatboxTitle = $('.chatbox__title'),
+        $chatboxTitleClose = $('.chatbox__title__close');
+        //$chatboxCredentials = $('.chatbox__credentials');
+    $chatboxTitle.on('click', function() {
+        $chatbox.toggleClass('chatbox--tray');
+        $chatbox.toggleClass('chatbox--empty');
+    });
+    $chatboxTitleClose.on('click', function(e) {
+        e.stopPropagation();
+        $chatbox.addClass('chatbox--closed');
+    });
+    $chatbox.on('transitionend', function() {
+        if ($chatbox.hasClass('chatbox--closed')) $chatbox.remove();
+    });
+});
+})(jQuery);
 </script>
 {%endblock%}
