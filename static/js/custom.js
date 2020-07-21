@@ -1,4 +1,30 @@
 
+function teacher_dashboard(meeting_id){
+  $.ajax({
+    url: '/teacher_dashboard/',
+    data: {
+              'meetingId':meeting_id
+          },
+          dataType: 'json',
+          success: function (data) {
+            var r_attentive = 100 - data.student_activness;
+            var r_effective = 100 - data.student_effectness;
+
+            $('#attendance').html(data.student_attendance);
+            $('#attentive').html(data.student_activness);
+            $('#effective').html(data.student_effectness);
+            $('#r-attentive').html(r_attentive);
+            $('#r-effective').html(r_effective);
+            $('#attentive').css('width',data.student_activness+'%');
+            $('#r-attentive').css('width',r_attentive+'%');
+            $('#effective').css('width',data.student_effectness+'%');
+            $('#r-effective').css('width',r_effective+'%');
+          }
+        });
+}
+
+
+
 $('#create-meeting').click(function(){
 	var subject = $('#SubjectDropdown').val();
 	var topic = $('#topicDropdown').val();
@@ -14,9 +40,11 @@ $('#create-meeting').click(function(){
         	dataType: 'json',
         	success: function (data) {
         		$('#chatt-room').html('');
-        		$("#chatt-room").append( "<p>Meeting Id :- "+data.meeting_id+"</p>" );
+        		$("#chatt-room").append( "<p id = 'current-meeting-id'>Meeting Id :- "+data.meeting_id+"</p>" );
         		$("#chatt-room").append( "<div id ='meet'></div>" );
 				createRoom(data.meeting_id,logedin_user);
+                $('#teacher-dashboard').css('display','block')
+                setInterval( function() {teacher_dashboard(data.meeting_id)}, 10000);
         	}
       	});
 	}
