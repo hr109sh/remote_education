@@ -1,128 +1,132 @@
 #wrapper {
-    overflow-x: hidden;
- }
+  overflow-x: hidden;
+}
 
- .topMargin{
-     margin-top:2rem;
- }
+.topMargin{
+   margin-top:2rem;
+}
 
- #menu-toggle{
-   color: #007bff;
-   background-color: transparent!important;
- }
+#menu-toggle{
+ color: #007bff;
+}
 
- .deep-blue-text{
-    color: #007bff;
-   
- }
+.deep-blue-text{
+  color: #007bff;
+ 
+}
 
- .title{
-   /* font-family: Arial, Helvetica, sans-serif; */
-   font-size: large;
- }
+.title{
+ /* font-family: Arial, Helvetica, sans-serif; */
+ font-size: large;
+}
 
 #sidebar-wrapper {
-  min-height: 100vh;
-  margin-left: -15rem;
-  -webkit-transition: margin .25s ease-out;
-  -moz-transition: margin .25s ease-out;
-  -o-transition: margin .25s ease-out;
-  transition: margin .25s ease-out;
+min-height: 100vh;
+margin-left: -15rem;
+-webkit-transition: margin .25s ease-out;
+-moz-transition: margin .25s ease-out;
+-o-transition: margin .25s ease-out;
+transition: margin .25s ease-out;
 }
 
 #sidebar-wrapper .sidebar-heading {
-  padding: 0.875rem 1.25rem;
-  font-size: 1.2rem;
+padding: 0.875rem 1.25rem;
+font-size: 1.2rem;
 }
 
 #sidebar-wrapper .list-group {
-  width: 15rem;
+width: 15rem;
 }
 
 #page-content-wrapper {
-  min-width: 100vw;
+min-width: 100vw;
 }
 
 #wrapper.toggled #sidebar-wrapper {
-  margin-left: 0;
+margin-left: 0;
 }
 
 @media (min-width: 768px) {
-  #sidebar-wrapper {
-    margin-left: 0;
-  }
+#sidebar-wrapper {
+  margin-left: 0;
+}
 
-  #page-content-wrapper {
-    min-width: 0;
-    width: 100%;
-  }
+#page-content-wrapper {
+  min-width: 0;
+  width: 100%;
+}
 
-  #wrapper.toggled #sidebar-wrapper {
-    margin-left: -15rem;
-  }
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: -15rem;
+}
 }
 
 .card-1 {
-  background-color:#6790fe;
-  width: auto;
-  height: 10rem;
+background-color:#6790fe;
+width: auto;
+height: 10rem;
 }
 .card-2 {
-  background-color:#fac934;
-  width: auto;
-  height: 10rem;
+background-color:#fac934;
+width: auto;
+height: 10rem;
 }
 .card-3 {
-  background-color:#75b747;
-  width: auto;
-  height: 10rem;
+background-color:#75b747;
+width: auto;
+height: 10rem;
 }
 .title {
-  margin-left: 1rem;
-  font-weight: 600px;
+margin-left: 1rem;
+font-weight: 600px;
 }
 .card-title.font-weight-bold {
-  font-size: larger;
-  padding-top: 35px;
-  margin-left: 75px;
-  color: white;
+font-size: larger;
+padding-top: 35px;
+margin-left: 75px;
+color: white;
+padding-right: 2rem;
 }
 .card-value-display {
-  border: 5px solid grey;
-  /* border-radius: 50%; */
-  width: 35%;
-  height: 70%;
-  margin-left: 32%;
-  margin-top: 10%;
-  background: white;
+border: 5px solid grey;
+/* border-radius: 50%; */
+width: 7rem;
+height: 7rem;
+margin-left: 32%;
+margin-top: 10%;
+background: white;
 }
 .card-value{
-  margin-left: 20%;
-  margin-top: 30%;
-  color: #000;
-  font-weight: 600;
-  font-size: x-large;
+margin-left: 20%;
+margin-top: 30%;
+color: #000;
+font-weight: 600;
+font-size: x-large;
 }
 
 .card-body {
-  margin-top: 60px;
+margin-top: 60px;
 }
 
 .booking-card{
-  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+-webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  height:350px;
 }
 
 .dropdown:hover{
-  background-color: white;
-  color: #007bff;
-  box-shadow: 1px 1px 10px #007bff;
+background-color: white;
+color: #007bff;
+box-shadow: 1px 1px 10px #007bff;
 
 }
 
 .dropdown-item:hover{
-  background-color: #007bff;
-  border: none;
+background-color: #007bff;
+border: none;
 
 }
 
+.hard-code{
+  width:100%;
+}
