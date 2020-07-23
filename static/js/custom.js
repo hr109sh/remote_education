@@ -44,7 +44,7 @@ $('#create-meeting').click(function(){
         		$("#chatt-room").append( "<div id ='meet'></div>" );
 				createRoom(data.meeting_id,logedin_user);
                 $('#teacher-dashboard').css('display','block')
-                setInterval( function() {teacher_dashboard(data.meeting_id)}, 10000);
+                setInterval( function() {teacher_dashboard(data.meeting_id)}, e);
         	}
       	});
 	}
