@@ -418,6 +418,20 @@ def intract_tutor(request):
 	return render(request,'video_chatt_app/intract_tutor.html',{'user_role_info':user_role_info})
 
 
+def teacher_dashboard(request):
+	meeting_id = request.GET.get('meetingId', None)
+	meeting_obj = UserMeeting.objects.filter(meeting_id = int(meeting_id))
+	student_attendance = get_total_session_attended(meeting_obj)
+	student_activness = get_total_student_attentivness(meeting_obj)
+	student_effectness = get_total_accurate_response(meeting_obj)
+	data = {
+		'student_attendance':student_attendance,
+		'student_activness':student_activness,
+		'student_effectness':student_effectness
+	}
+	return JsonResponse(data)
+
+
 
 	
 

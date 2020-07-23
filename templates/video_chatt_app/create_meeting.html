@@ -62,9 +62,8 @@
         </div>
       </center>
     </legend><br>
-      <!-- <div>
-      <input type="text" class="form-control form-rounded" placeholder="Enter Name">
-    </div> -->
+    <div class="alert alert-danger" id = "create-meeting-alet" role="alert" style="display:none;">
+    </div><br>
     <div>
     <select name="grade" id="GradeDropdown" class="form-control form-rounded">
       <option class="dropdown-item" value="" disabled selected>Choose Grade</option>
@@ -83,13 +82,21 @@
     </div>
   <div>
     <select name="topic" id="topicDropdown" class="form-control form-rounded">
+      <option class="dropdown-item" value="" disabled selected>Choose Topic</option>
     </select>
   <div class="input-group mycustom">
     <!-- <input type="text" class="form-control form-rounded" placeholder="Enter Meeting ID"> -->
     <div class="input-group-prepend">
       <input type="submit" id="create-meeting" value="submit" class="btn btn-primary btn-sm" id="inputGroupPrepend2" style="border-radius: 1rem;margin-top: 1rem;height: 2rem;">
 </div>
-<div class="chatbox chatbox--tray chatbox--empty">
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div class="chatbox chatbox--tray chatbox--empty" id = "teacher-dashboard" style= "display:none">
   <div class="chatbox__title">
       <h6><a href="#">Dashboard</a></h6>
       <button class="chatbox__title__tray">
@@ -98,34 +105,32 @@
   </div>
   <div class="chatbox__body">
       <div class="chatbox__body__message chatbox__body__message--left">
-        Session Time :
-        <div class="progress">
+      <!--   Session Time : -->
+      <!--   <div class="progress">
           <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" style="width:80%">40.25</div>
-        </div>
+        </div> -->
         Attendance : 
         <div class="progress">
-          <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" style="width:100%">15 here</div>
-        </div>
-        Attentive : 
+          <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" style="width:100%" id = "attendance">0</div>
+        </div><br>
+        Attentive(%) : 
         <div class="progress">
-          <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" style="width:73%">73%</div>
-          <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" style="width:27%">27%</div>
-        </div>
-        Effective : 
+          <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" style="width:0%" id = "attentive">0%</div>
+          <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" style="width:100%" id = "r-attentive">100%</div>
+        </div><br>
+        Effective(%) : 
         <div class="progress">
-          <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" style="width:60%">60%</div>
-          <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" style="width:40%">40%</div>
+          <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" style="width:0%" id = "effective">0%</div>
+          <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" style="width:100%" id ="r-effective">100%</div>
         </div>
-        <div>Questions :
+      <!--   <div>Questions :
           <span><a href="#">0/5</a></span>
-        </div>
-        <!-- <div>Polls Given :
-          <span><a href="#">0/1</a></span>
         </div> -->
       </div>
   </div>
 </div>
-</div>
+
+
 <script>
   var logedin_user = '{{ user.get_username }}';
 
@@ -151,7 +156,6 @@ $(document).ready(function() {
     var $chatbox = $('.chatbox'),
         $chatboxTitle = $('.chatbox__title'),
         $chatboxTitleClose = $('.chatbox__title__close');
-        //$chatboxCredentials = $('.chatbox__credentials');
     $chatboxTitle.on('click', function() {
         $chatbox.toggleClass('chatbox--tray');
         $chatbox.toggleClass('chatbox--empty');
@@ -165,5 +169,6 @@ $(document).ready(function() {
     });
 });
 })(jQuery);
+
 </script>
 {%endblock%}
