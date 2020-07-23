@@ -1,0 +1,12 @@
+applications:
+ - name: remote-e
+   command: pip install --upgrade pip
+   command: pip install django==2.0.5
+   command: ibmcloud cf set-env remote-e http_proxy "http://remote-e.eu-gb.mybluemix.net:8080"
+   command: ibmcloud cf set-env remote-e https_proxy "https://remote-e.eu-gb.mybluemix.net:8081"
+   command: ibmcloud cf map-route remote-e remote-e.eu-gb.mybluemix.net --port 8080
+   command: python3 manage.py runserver
+   random-route: true
+   memory: 256M
+env:
+  DISABLE_COLLECTSTATIC: 1
