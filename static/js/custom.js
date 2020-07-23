@@ -44,7 +44,7 @@ $('#create-meeting').click(function(){
         		$("#chatt-room").append( "<div id ='meet'></div>" );
 				createRoom(data.meeting_id,logedin_user);
                 $('#teacher-dashboard').css('display','block')
-                setInterval( function() {teacher_dashboard(data.meeting_id)}, e);
+                setInterval( function() {teacher_dashboard(data.meeting_id)},10000);
         	}
       	});
 	}
@@ -122,7 +122,7 @@ $('#join-meeting-btn').click(function(){
                     setInterval( function() { 
                                         QustionInteral(meeting_id);
                                         $("#myToast").toast("hide");
-                                         }, 10000);
+                                         }, 30000);
         		}
         		else{
         			alert('fail')
