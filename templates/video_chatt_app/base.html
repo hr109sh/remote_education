@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Remote Education</title>
+  <title>Teacher Assist</title>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -29,12 +29,12 @@
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading"><a href="{%url 'video_chatt_app:index'%}">Remote Education</a></div>
+      <div class="sidebar-heading"><a href="{%url 'video_chatt_app:index'%}">Teacher Assist</a></div>
       <div class="list-group list-group-flush">
         <a href="{%url 'video_chatt_app:join_meeting'%}" class="list-group-item list-group-item-action bg-light">Join Meeting</a>
         {% if user_role_info == 'student' %}
         <a href="{%url 'video_chatt_app:student_info'%}" class="list-group-item list-group-item-action bg-light">Student information</a>
-        <a href="{%url 'video_chatt_app:intrac_tutor'%}" class="list-group-item list-group-item-action bg-light">Intract With Tutor</a>
+        <a href="{%url 'video_chatt_app:intrac_tutor'%}" class="list-group-item list-group-item-action bg-light">Interact With Tutor</a>
         {%endif%}
         {% if user_role_info == 'teacher' %}
         <a href="{%url 'video_chatt_app:create_meeting'%}" class="list-group-item list-group-item-action bg-light">Host Meeting</a>
