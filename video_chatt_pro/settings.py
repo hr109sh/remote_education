@@ -34,7 +34,7 @@ SECRET_KEY = 'u80ys+5iv$_9e5r^#sr(#8u^ov(7sc!dhdp6)hxd^4e7w**uw*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mybluemix.net','localhost','0.0.0.0','remote-e.eu-gb.mybluemix.net']
 
 
 # Application definition
