@@ -13,6 +13,11 @@ class UserGrade(models.Model):
 	student_grade = models.IntegerField()
 
 
+class AttentionSpain(models.Model):
+	user_grade = models.ForeignKey(UserGrade,on_delete=models.CASCADE)
+	attention_span = models.BigIntegerField()
+
+
 
 class UserRole(models.Model):
 	user_id= models.ForeignKey(User, on_delete=models.CASCADE)
@@ -68,7 +73,7 @@ class user_parent(models.Model):
 
 class UserMeeting(models.Model):
 	user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-	meeting_id = models.IntegerField()
+	meeting_id = models.BigIntegerField()
 	grade_id = models.ForeignKey(UserGrade,on_delete = models.CASCADE)
 	meeting_subject = models.ForeignKey(Subject,on_delete = models.CASCADE)
 	meeting_topic = models.ForeignKey(Topic,on_delete = models.CASCADE)

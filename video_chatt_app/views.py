@@ -166,13 +166,16 @@ def student_join_meeting(request):
 	meeting_id = request.GET.get('meetingId', None)
 	meeting_name = request.GET.get('meetingName', None)
 	try:
+		student_grade_obj = StudentGrade.objects.get(user_id = User.objects.get(username = request.user.username))
+		attention_span_obj = AttentionSpain.objects.get(user_grade = student_grade_obj.grade_id)
 		user_attandance_obj = User_attendence(
 								user_id = User.objects.get(username = request.user.username),
 								meeting_id = UserMeeting.objects.get(meeting_id = meeting_id)
 							)
 		user_attandance_obj.save()
 		data = {
-			'mesaage':'Marked Attandance'
+			'mesaage':'Marked Attandance',
+			'attention_span':attention_span_obj.attention_span
 		}
 		return JsonResponse(data)
 	except Exception as err:

@@ -117,12 +117,12 @@ $('#join-meeting-btn').click(function(){
 							$('#vedio-chatt-room').html('');
 							$("#vedio-chatt-room").append( "<div id ='meet'></div>" );
 							createRoom(meeting_id ,meeting_name);
-        				}
-      				});
-                    setInterval( function() { 
+                            setInterval( function() { 
                                         QustionInteral(meeting_id);
                                         $("#myToast").toast("hide");
-                                         }, 30000);
+                                         }, data.attention_span);
+        				}
+      				});
         		}
         		else{
         			alert('fail')
