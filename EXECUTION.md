@@ -18,7 +18,7 @@ cd remote_education
 python manage.py createsuperuser
 ```	
 
-![TeacherAssist/Create_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/create_superadmin.png)
+![TeacherAssist/Create_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/create_superadmin.png)
 
 3.	Run the app.
 
@@ -30,7 +30,7 @@ View your app at: http://localhost:8000
 
 4. Hit the url http://localhost:8000/admin/ and login using the super user credentials 
 
-![TeacherAssist/Login_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/django_admin_login.png)
+![TeacherAssist/Login_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/django_admin_login.png)
 
 ## Steps to Create Subject
 
@@ -38,11 +38,11 @@ The different subjects taught in the school are entered into the system.
 
 1. 	Hit the url http://localhost:8000/admin/video_chatt_app/subject/ to add new subject introduced. Click on 'ADD SUBJECT'
 
-![TeacherAssist/Subject_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/add_subject.png)
+![TeacherAssist/Subject_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/add_subject.png)
 
 2. 	Add the subject of your choice and save
 
-![TeacherAssist/NewSubject_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/new_subject.png)
+![TeacherAssist/NewSubject_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/new_subject.png)
 
 ## Steps to Set-up Teacher User
 
@@ -53,46 +53,46 @@ Note: All the steps are required and have to be added in the appropriate sequenc
 
 1. 	Hit the url http://localhost:8000/admin/auth/user/ to add new teacher. Click on Add User.
 
-![TeacherAssist/NewUser_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/add_newuser.png)
+![TeacherAssist/NewUser_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/add_newuser.png)
 
 2. 	Enter the username as per the organizational guidelines. Set a default password. Click on SAVE. 
 
-![TeacherAssist/NewUser1_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/new_user.png)
+![TeacherAssist/NewUser1_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/new_user.png)
 
 3.	User will be successfully created. You will now be prompted to add additional user details like First Name, Last Name, Email Address. 
 Additional details can be added. Click on SAVE.
 
-![TeacherAssist/NewUser1_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/add_userdetails.png)
+![TeacherAssist/NewUser1_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/add_userdetails.png)
 
 ### Associate Teacher with Teacher Role
 
 1. 	Hit the url http://localhost:8000/admin/video_chatt_app/userrole/ and Click on 'ADD USER ROLE'
 
-![TeacherAssist/UserRole_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/add_userrole.png)
+![TeacherAssist/UserRole_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/add_userrole.png)
 
 2.	Select the teacher to be mapped to the 'teacher' role id. Click on SAVE.
-![TeacherAssist/MapRoleTeacher_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/map_teacherrole.png)
+![TeacherAssist/MapRoleTeacher_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/map_teacherrole.png)
 
 ### Associate Teacher with Subjects
 
 1. 	Hit the url http://localhost:8000/admin/video_chatt_app/subject_teacher/ and Click on 'ADD SUBJECT TEACHER'
 
-![TeacherAssist/SubjectTeacher_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/add_subjectteacher.png)
+![TeacherAssist/SubjectTeacher_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/add_subjectteacher.png)
 
 2.	Select the appropriate subject id and user id. Click on SAVE.
 
-![TeacherAssist/MapSubjectTeacher_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/map_subjectteacher.png)
+![TeacherAssist/MapSubjectTeacher_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/map_subjectteacher.png)
 
 ### Associate Teacher with Grade
 
 1. 	Hit the url http://localhost:8000/admin/video_chatt_app/teachergrade/ and Click on 'ADD TEACHER GRADE'
 
-![TeacherAssist/GradeTeacher_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/add_teachergrade.png)
+![TeacherAssist/GradeTeacher_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/add_teachergrade.png)
 
 2.	Select the appropriate user id and grade id. Click on SAVE. 
 	Note: The grade id is indicated in the brackets and refer to the grade the teacher is teaching. e.g. UserGrade object(3) means 3rd grade.
 
-![TeacherAssist/MapGradeTeacher_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/teacher_grade.png)
+![TeacherAssist/MapGradeTeacher_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/teacher_grade.png)
 
 ## Steps to Set-up Student User
 
@@ -103,36 +103,36 @@ Note: All the steps are required and have to be added in the appropriate sequenc
 
 1. 	Hit the url http://localhost:8000/admin/auth/user/ to add new student. Click on Add User.
 
-![TeacherAssist/NewUser_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/add_newuser.png)
+![TeacherAssist/NewUser_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/add_newuser.png)
 
 2. 	Enter the username as per the organizational guidelines. Set a default password. Click on SAVE. 
 
-![TeacherAssist/Student_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/add_student.png)
+![TeacherAssist/Student_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/add_student.png)
 
 3.	User will be successfully created. You will now be prompted to add additional user details like First Name, Last Name, Email Address. 
 Additional details can be added. Click on SAVE.
 
-![TeacherAssist/Student_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/add_studentdetails.png)
+![TeacherAssist/Student_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/add_studentdetails.png)
 
 ### Associate Teacher with Student Role
 
 1. 	Hit the url http://localhost:8000/admin/video_chatt_app/userrole/ and Click on 'ADD USER ROLE'
 
-![TeacherAssist/UserRole_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/add_userrole.png)
+![TeacherAssist/UserRole_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/add_userrole.png)
 
 2.	Select the student to be mapped to the 'student' role id. Click on SAVE.
-![TeacherAssist/MapRoleStudent_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/map_studentrole.png)
+![TeacherAssist/MapRoleStudent_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/map_studentrole.png)
 
 ### Associate Student with Grade
 
 1. 	Hit the url http://localhost:8000/admin/video_chatt_app/studentgrade/ and Click on 'ADD STUDENT GRADE'
 
-![TeacherAssist/GradeStudent_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/add_studentgrade.png)
+![TeacherAssist/GradeStudent_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/add_studentgrade.png)
 
 2.	Select the appropriate user id and grade id. Click on SAVE. 
 	Note: The grade id is indicated in the brackets and refer to the grade the student is studying in. e.g. UserGrade object(3) means 3rd grade.
 
-![TeacherAssist/MapGradeStudent_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/map_studentgrade.png)
+![TeacherAssist/MapGradeStudent_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/map_studentgrade.png)
 
 ## View Role 
 
@@ -140,4 +140,4 @@ There are currently two roles in the TeacherAssist application i.e. Teacher and 
 
 Hit the url http://localhost:8000/admin/video_chatt_app/role/ and view the available roles in the system.
 
-![TeacherAssist/Role_SuperAdmin](https://github.com/hr109sh/remote_education/tree/master/static/images/django_roles.png)
+![TeacherAssist/Role_SuperAdmin](https://github.com/hr109sh/remote_education/blob/master/static/images/django_roles.png)
