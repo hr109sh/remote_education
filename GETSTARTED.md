@@ -15,7 +15,7 @@ You'll need the following:
 
 ### Step 1: Clone the sample app
 
-First, clone the repo and change to the directory where the sample app is located.
+First, clone the repo and change to the directory where the app is located.
 
 ```bash
 git clone https://github.com/hr109sh/remote_education
