@@ -420,6 +420,19 @@ def intract_tutor(request):
 	user_role_info = user_role.role_id.name
 	return render(request,'video_chatt_app/intract_tutor.html',{'user_role_info':user_role_info})
 
+def add_topic(request):
+	user_obj = User.objects.get(username = request.user.username)
+	subject_list = subject_teacher.objects.filter(user_id = user_obj)
+	grade_list = TeacherGrade.objects.filter(user_id = user_obj)
+	user_role = UserRole.objects.filter(user_id = user_obj)[0]
+	user_role_info = user_role.role_id.name
+	data = {
+		'subject_list':subject_list,
+		'user_role_info':user_role_info,
+		'grade_list':grade_list
+	}
+	return render(request,'video_chatt_app/add_topic.html',{'user_role_info':user_role_info})
+
 
 def teacher_dashboard(request):
 	meeting_id = request.GET.get('meetingId', None)

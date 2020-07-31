@@ -1,0 +1,159 @@
+{%extends 'video_chatt_app/base.html'%}
+{%block content%}
+  <style>
+    .background {
+      background-color: #f6f6f6;
+    }
+
+    .shadow {
+      -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+      box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+      -webkit-border-radius: 5px 5px 5px 5px;
+      border-radius: 5px 5px 5px 5px;
+      margin: 5px 20px 40px 20px;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+  </style>
+        <div class="well form-horizontal border shadow p-5 background" 
+          id="question_form" style="margin-top: 1rem;">
+          <fieldset>
+
+            <!-- Form Name -->
+            <legend>
+              <center>
+                <div>
+                  <h1 style="color:#56baed">Add Topic</h1>
+                </div>
+              </center>
+            </legend><br>
+            <div class="alert alert-danger" role="alert" id="upload-alert" style="display:none;">
+            </div>
+            <!-- Text input-->
+            <!-- <center> -->
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="col-md-12 control-label">Grade : </label>
+                  <div class="col-md-12 selectContainer">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                      <select name="grade" class="form-control selectpicker" id="select-grade">
+                        <option value="" selected disabled>Select your Grade</option>
+                        {%for grade in grade_list%}
+                        <option value ="{{grade.grade_id.student_grade}}">{{grade.grade_id.student_grade}}</option>
+                        {%endfor%}
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="col-md-12 control-label">Subject :</label>
+                  <div class="col-md-12 selectContainer">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                      <select name="subject" class="form-control selectpicker" id="select-subject">
+                        <option value="" selected disabled>Select your Subject</option>
+                        {%for subject in subject_list%}
+                        <option>{{subject.subject_id.subject_name}}</option>
+                        {%endfor%}
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                    <label class="col-md-12 control-label">Topic :</label>
+                    <div class="col-md-12 inputGroupContainer">
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id = "input-question" name="question" placeholder="Questions" class="form-control" type="text">
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <center>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <br>
+                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button
+                    id="submit-button" class="btn btn-primary"
+                    style="background-color: #56baed;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span
+                      class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                </div>
+              </div>
+            </center>
+          </fieldset>
+        </div>
+
+<script>
+  $("#select-subject").change(function(){
+    var selected_sub = $(this).val();
+    $('#topicDropdown').html('');
+    $('#topicDropdown').append('<option value="" selected disabled>Select your Topic</option>');
+      {%for topic_item in topic_list%}
+        {%for topic in topic_item%}
+          var subject_name = '{{topic.subject_id.subject_name}}'
+          if (subject_name == selected_sub){
+            $('#topicDropdown').append($('<option>', {
+                value: '{{topic.topic_name}}',
+                text: '{{topic.topic_name}}'
+           }));
+          }
+        {%endfor%}
+      {%endfor%}
+  });
+
+$('#submit-button').click(function(){
+  var selected_grade = $('#select-grade').val();
+  var selected_sub = $('#select-subject').val();
+  var selected_topic = $('#topicDropdown').val();
+  var input_question = $('#input-question').val();
+  var option1 = $('#input-answer1').val();
+  var option2 = $('#input-answer2').val();
+  var selected_answer = $('#selected-answer').val();
+  if (selected_grade && selected_sub && selected_topic && input_question && option1 && option2 && selected_answer){
+     $.ajax({
+        url: '/insert_question/',
+        data: {
+            'selectedGrade': selected_grade,
+            'selectedSub':selected_sub,
+            'selectedTopic':selected_topic,
+            'inputQuestion':input_question,
+            'option_1':option1,
+            'option_2':option2,
+            'selectedAnswer':selected_answer
+
+        },
+        dataType: 'json',
+        success: function (data) {
+            $('#upload-alert').html(data.message);
+            $('#upload-alert').css('text-align','center');
+            $('#upload-alert').css('display','block');
+            var selected_grade = $('#select-grade').val('');
+            var selected_sub = $('#select-subject').val('');
+            var selected_topic = $('#topicDropdown').val('');
+            var input_question = $('#input-question').val('');
+            var option1 = $('#input-answer1').val('');
+            var option2 = $('#input-answer2').val('');
+            var selected_answer = $('#selected-answer').val('');
+        }
+    });
+
+  }
+  else{
+    $('#upload-alert').html('Please select and fill all the fields');
+    $('#upload-alert').css('display','block');
+    $('#upload-alert').css('text-align','center');
+  }
+
+})
+</script>
+{%endblock%}
