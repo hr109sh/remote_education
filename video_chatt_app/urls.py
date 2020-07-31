@@ -17,5 +17,7 @@ urlpatterns = [
 	path('insert_question/',views.insert_question,name= "insert_question"),
 	path('get_dashboard_data/',views.get_dashboard_data,name="get_dashboard_data"),
 	path('teacher_dashboard/',views.teacher_dashboard,name="teacher_dashboard"),
-	path('add_topic/',views.add_topic,name ="add_topic")
+	path('add_topic/',views.add_topic,name ="add_topic"),
+	path('upload_topic/',views.upload_topic,name ="upload_topic"),
+
 ]

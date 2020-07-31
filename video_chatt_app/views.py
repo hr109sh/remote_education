@@ -422,16 +422,14 @@ def intract_tutor(request):
 
 def add_topic(request):
 	user_obj = User.objects.get(username = request.user.username)
-	subject_list = subject_teacher.objects.filter(user_id = user_obj)
-	grade_list = TeacherGrade.objects.filter(user_id = user_obj)
+	subject_list = Subject.objects.all()
 	user_role = UserRole.objects.filter(user_id = user_obj)[0]
 	user_role_info = user_role.role_id.name
 	data = {
 		'subject_list':subject_list,
 		'user_role_info':user_role_info,
-		'grade_list':grade_list
 	}
-	return render(request,'video_chatt_app/add_topic.html',{'user_role_info':user_role_info})
+	return render(request,'video_chatt_app/add_topic.html',context=data)
 
 
 def teacher_dashboard(request):
@@ -446,6 +444,21 @@ def teacher_dashboard(request):
 		'student_effectness':student_effectness
 	}
 	return JsonResponse(data)
+
+
+def upload_topic(request):
+	selected_sub = request.GET.get('selectedSub', None)
+	selected_topic = request.GET.get('selectedTopic', None)
+	topic_obj = Topic( 
+						topic_name = selected_topic,
+						subject_id = Subject.objects.get(subject_name = selected_sub)
+					)
+	topic_obj.save()
+	data = {
+			'message':'Saved Sucessfully'
+		}
+	return JsonResponse(data)
+
 
 
 
