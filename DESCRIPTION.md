@@ -4,7 +4,11 @@ Covid-19 pandemic caused the education to move online. Teachers and students are
 
 This is what TeacherAssist does. 
 
+
 [Project website](https://github.com/hr109sh/remote_education)
+
+[Project website](https://code-and-response.github.io/Project-Sample/)
+
 
 ## The Idea
 
@@ -21,7 +25,6 @@ TeacherAssist provides a platform where the teachers and students can collaborat
 TeacherAssist has a simple UI which can be used by any non-techie teacher or student. We ensure the privacy of the student is not intruded. Attentiveness is not tracked by tracking keystrokes or windows overlays. We use a positive approach to solve a known problem.
 
 ## Scope
-
 TeacherAssist can be used as a regular assessment tool and to track the performance of the students. This is also be used to track the effectiveness of the teachers based on the parameters derived from the student data. As a future scope views can be provided to parents, school management, school administration, vendors, and government. It can be a comprehensive tool to deliver targeted content.
 
 Scope for the solution is not just limited to education. It can be used in Project Management, Corporate Training, Conferences, etc. 
@@ -29,4 +32,7 @@ Scope for the solution is not just limited to education. It can be used in Proje
 ### Vision
 
 Our vision is “Build and effective learning environment for happy students.”
+
+## Acknowledgments
+Nullam nec lectus massa. Proin feugiat placerat nisi lacinia lobortis. Duis efficitur ac orci ac lobortis.
 
