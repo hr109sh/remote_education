@@ -36,11 +36,11 @@ Attentiveness is the time taken by the student to respond to a question. Effecti
 
 ## Demo Video
 
-[![Watch the video](https://github.com/hr109sh/remote_education/blob/master/images/TeacherAssist_Logo.png)](https://youtu.be/qUVb7TxNaMo)
+[![Watch the video](https://github.com/hr109sh/remote_education/tree/master/static/images/TeacherAssist_Logo.png)](https://youtu.be/qUVb7TxNaMo)
 
 ## The Architecture
 
-![TeacherAssist/Architecture](https://github.com/hr109sh/remote_education/blob/master/images/TeacherAssist_Architecture.png)
+![TeacherAssist/Architecture](https://github.com/hr109sh/remote_education/tree/master/static/images/TeacherAssist_Architecture.png)
 
 User (Teacher)
 1. The user logs in to the web application
@@ -59,21 +59,21 @@ User (Student)
 
 ## Project Roadmap
 
-1. Tutor Mode for Student - Based on the insights from the data, the teacher can recommend a tutor to the student. The tutor will be build utilizing the capabilities of IBM Watson Assistant. The tutor will interact with the students to answer the queries and check the understanding level of each student.
+1. 	Tutor Mode for Student - Based on the insights from the data, the teacher can recommend a tutor to the student. The tutor will be build utilizing the capabilities of IBM Watson Assistant. The tutor will interact with the students to answer the queries and check the understanding level of each student.
 
-2. Real-Time Questions based on topic - Make use of the capabilities of IBM Speech to Text and Named-Entity Recognition (NER). During an on-going class, perform a prompt question to the student based her speech to text. This could be a simple fill in the blank.
+2. 	Real-Time Questions based on topic - Make use of the capabilities of IBM Speech to Text and Named-Entity Recognition (NER). During an on-going class, perform a prompt question to the student based her speech to text. This could be a simple fill in the blank.
 
-3. Assessment Tool - Map the data collected from the regular class and introduce an ongoing assessment process to track the performance.
+3. 	Assessment Tool - Map the data collected from the regular class and introduce an ongoing assessment process to track the performance.
 
-4. Recap - Play a quick recap of the previous session at the start of new session for a teacher. During the on-going session the highlights will be recorded and quick recap will be created.
+4. 	Recap - Play a quick recap of the previous session at the start of new session for a teacher. During the on-going session the highlights will be recorded and quick recap will be created.
 
-5. Role-based view - Develop role-based views for Parents, School Administration, School Management, Vendors. 
+5. 	Role-based view - Develop role-based views for Parents, School Administration, School Management, Vendors. 
 
-6. Integrate with any collaborative platform.
+6. 	Integrate with any collaborative platform.
 
-7. Face recognition for better results.
+7. 	Face recognition for better results.
 
-8. Make the solution available for Corporates trainings, Project Management, Conferences, etc. 
+8. 	Make the solution available for Corporates trainings, Project Management, Conferences, etc. 
 
 ## Getting Started
 
@@ -84,7 +84,9 @@ By following the tutorial, you'll set up a development environment, deploy an ap
 ## Execution
 
 Explain how to run the application. 
+
 [More detail is available here](EXECUTION.md)
+
 
 ## Live demo
 
@@ -97,6 +99,7 @@ You can find a running system to test at [remote-e.eu-gb.mybluemix.net](http://r
 * [Python](https://www.python.org/) - Developed using Python
 * [Django](https://www.djangoproject.com/) - The web framework used
 * [Jitsi.org](https://jitsi.org/) - deploy secure video conferencing solutions 
+* [Bootstrap 4] (https://getbootstrap.com/docs/4.0/getting-started/introduction/) - Fast, responsive design
 
 ## Contributing
 
