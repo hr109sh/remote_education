@@ -1,34 +1,58 @@
 {%extends 'video_chatt_app/base.html'%}
 {%block content%}
- <div class="row">
-                    <div class="col">
-                        <!-- Card -->
-                        <div class="booking-card topMargin">
+<style>
+    .booking-card-student{
+-webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+}
+</style>
+<div class="container" id ="vedio-chatt-room">
 
-                            <!-- Card image -->
-                            <div class="view overlay">
-                                <img class="card-img-top"
-                                    src="https://gravatar.com/avatar/fc127565a4bbb52f752d898304f78423?s=400&d=mp&r=x"
-                                    alt="Card image cap">
-                                    <div></div>
-                                <a href="#!">
-                                    <div class="mask rgba-white-slight"></div>
-                                </a>
-                            </div>
+    <div class="well form-horizontal border shadow p-5 background" id="formContent"
+      style="margin-top: 1rem; height:550px">
+      <legend>
+        <center>
+          <div>
+            <h1 style="color:#56baed">Student Information</h1>
+          </div>
+        </center>
+      </legend><br>
+      <div class="row">
+        <div class="col-md-4">
+            <!-- Card -->
+            <div class="booking-card-student topMargin">
 
-                        </div>
-                        <!-- Card -->
-                    </div>
-                <div class="col">
-                    <h4 class="card-title font-weight-bold"><a>John Doe</a></h4>
-                                <!-- Data -->
-                                <p class="mb-2"><strong>Roll No:</strong> No Data</p>
-                                <p class="mb-2"><strong>Grade:</strong>{{student_grade.grade_id.student_grade}}</p>
-                                <p class="mb-2"><strong>Overall Attentiveness:</strong> 80%</p>
-                                <p class="mb-2"><strong>Accurate Response:</strong> 70%</p>
-
-
+                <!-- Card image -->
+                <div class="view overlay">
+                    <img class="card-img-top"
+                        src="./../../static/images/student_avatar.jpg"
+                        alt="Card image cap">
                 </div>
-                <div class="col"></div>
+
             </div>
+            <!-- Card -->
+        </div>
+    <div class="col-md-8">
+        <h4 class="card-title font-weight-bold" style="color:#56baed"><a>Details</a></h4>
+                    <!-- Data -->
+                    <p class="mb-2"><strong>Name:</strong> John Doe</p>
+                    <p class="mb-2"><strong>Roll No:</strong> 23</p>
+                    <p class="mb-2"><strong>Grade:</strong> 9</p>
+                    <p class="mb-2"><strong>Overall Attentiveness:</strong> 80%</p>
+                    <p class="mb-2"><strong>Accurate Response:</strong> 70%</p>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id=tutormode>
+                        <label class="form-check-label" for="exampleCheck1">Recommend Tutor</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id=low_attendance>
+                        <label class="form-check-label" for="exampleCheck1">Trigger E-mail to parent (Low Attendance)</label>
+                    </div>
+
+
+    </div>
+</div>
+    </div>
+  </div>
+ 
 {%endblock%}
