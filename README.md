@@ -36,11 +36,11 @@ Attentiveness is the time taken by the student to respond to a question. Effecti
 
 ## Demo Video
 
-[![Watch the video](https://github.com/hr109sh/remote_education/tree/master/static/images/TeacherAssist_Logo.png)](https://youtu.be/qUVb7TxNaMo)
+[![Watch the video](https://github.com/hr109sh/remote_education/blob/master/static/images/TeacherAssist_Logo.png)](https://youtu.be/qUVb7TxNaMo)
 
 ## The Architecture
 
-![TeacherAssist/Architecture](https://github.com/hr109sh/remote_education/tree/master/static/images/TeacherAssist_Architecture.png)
+![TeacherAssist/Architecture](https://github.com/hr109sh/remote_education/blob/master/static/images/TeacherAssist_Architecture.png)
 
 User (Teacher)
 1. The user logs in to the web application
