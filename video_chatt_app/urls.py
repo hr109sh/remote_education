@@ -16,5 +16,6 @@ urlpatterns = [
 	path('intrac_tutor/',views.intract_tutor,name="intrac_tutor"),
 	path('insert_question/',views.insert_question,name= "insert_question"),
 	path('get_dashboard_data/',views.get_dashboard_data,name="get_dashboard_data"),
-	path('teacher_dashboard/',views.teacher_dashboard,name="teacher_dashboard")
+	path('teacher_dashboard/',views.teacher_dashboard,name="teacher_dashboard"),
+	path('add_topic/',views.add_topic,name ="add_topic")
 ]

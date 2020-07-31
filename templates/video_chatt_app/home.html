@@ -76,7 +76,7 @@
 
                             <!-- Card content -->
                             <div class="card-body">
-                                <p>The total number of students attending the sessions scheduled by you</p>
+                                <p>The total number of students attending the sessions scheduled</p>
                             </div>
 
                         </div>
@@ -103,7 +103,7 @@
 
                             <!-- Card content -->
                             <div class="card-body">
-                                <p>The average attentiveness percentage of the students based on the selected filters</p>
+                                <p>The average attentiveness percentage of the students based on the classes attended</p>
                             </div>
 
                         </div>
@@ -116,7 +116,7 @@
                             <!-- Card image -->
                             <div class="view overlay">
                                     <div class="card-3">
-                                        <div class="card-title font-weight-bold">Accurate Response (%)</div>
+                                        <div class="card-title font-weight-bold">Student Effectiveness (%)</div>
                                         <div class="card-value-display rounded-circle">
                                             <div class="align-middle card-value " id = "session-Response" >{{accurate_response}}</div>
                                         </div>
@@ -130,7 +130,7 @@
 
                             <!-- Card content -->
                             <div class="card-body">
-                                <p>The average accurate response percentage of the students based on the selected filters</p>
+                                <p>The average effectiveness percentage of the students based on the accurate responses</p>
                             </div>
 
                         </div>
@@ -172,5 +172,11 @@ $('.hard-code').change(function(){
             }
     });
 });
+
+$('#select-grade').change(function(){
+    document.getElementById('select-subject').value="";
+    document.getElementById('select-topic').value="";
+    document.getElementById('select-student').value="";
+    });
 </script>
 {%endblock%}
