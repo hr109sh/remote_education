@@ -4,7 +4,11 @@ Covid-19 pandemic caused the education to move online. Teachers and students are
 
 This is what TeacherAssist does. 
 
+
+[Project website](https://github.com/hr109sh/remote_education)
+
 [Project website](https://code-and-response.github.io/Project-Sample/)
+
 
 ## The Idea
 
@@ -31,3 +35,4 @@ Our vision is “Build and effective learning environment for happy students.”
 
 ## Acknowledgments
 Nullam nec lectus massa. Proin feugiat placerat nisi lacinia lobortis. Duis efficitur ac orci ac lobortis.
+
